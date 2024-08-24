@@ -48,7 +48,7 @@
         },
         "binary": {
           "direction": "output",
-          "bits": [ 93377696, 3877479, 3877472, 3877468 ]
+          "bits": [ 3877484, 3877479, 3877472, 3877468 ]
         }
       },
       "cells": {
@@ -62,9 +62,9 @@
           },
           "attributes": {
             "BEL_STRENGTH": "00000000000000000000000000000001",
-            "NEXTPNR_BEL": "R20C2_SLICE7",
+            "NEXTPNR_BEL": "R16C2_SLICE1",
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "C:\\Users\\achac\\OneDrive\\Escritorio\\Diseno\\oss-cad-suite\\bin\\../share/yosys/gowin/cells_map.v:139.23-140.26"
+            "src": "C:\\OSS-CA~1\\bin\\../share/yosys/gowin/cells_map.v:139.23-140.26"
           },
           "port_directions": {
             "LSR": "input",
@@ -99,9 +99,9 @@
           },
           "attributes": {
             "BEL_STRENGTH": "00000000000000000000000000000001",
-            "NEXTPNR_BEL": "R16C2_SLICE1",
+            "NEXTPNR_BEL": "R20C2_SLICE5",
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "C:\\Users\\achac\\OneDrive\\Escritorio\\Diseno\\oss-cad-suite\\bin\\../share/yosys/gowin/cells_map.v:143.23-144.37"
+            "src": "C:\\OSS-CA~1\\bin\\../share/yosys/gowin/cells_map.v:143.23-144.37"
           },
           "port_directions": {
             "LSR": "input",
@@ -136,9 +136,9 @@
           },
           "attributes": {
             "BEL_STRENGTH": "00000000000000000000000000000001",
-            "NEXTPNR_BEL": "R16C2_SLICE7",
+            "NEXTPNR_BEL": "R20C2_SLICE1",
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "C:\\Users\\achac\\OneDrive\\Escritorio\\Diseno\\oss-cad-suite\\bin\\../share/yosys/gowin/cells_map.v:147.23-148.48"
+            "src": "C:\\OSS-CA~1\\bin\\../share/yosys/gowin/cells_map.v:147.23-148.48"
           },
           "port_directions": {
             "LSR": "input",
@@ -173,7 +173,7 @@
           },
           "attributes": {
             "BEL_STRENGTH": "00000000000000000000000000000110",
-            "NEXTPNR_BEL": "R15C1_IOBA",
+            "NEXTPNR_BEL": "R22C1_IOBB",
             "src": "../design/module.sv:3.24-3.30",
             "&DRIVE=8": "00000000000000000000000000000001",
             "&IO_TYPE=LVCMOS18": "00000000000000000000000000000001"
@@ -201,7 +201,7 @@
           },
           "attributes": {
             "BEL_STRENGTH": "00000000000000000000000000000001",
-            "NEXTPNR_BEL": "R18C47_IOBA",
+            "NEXTPNR_BEL": "R15C47_IOBA",
             "src": "../design/module.sv:2.23-2.27"
           },
           "port_directions": {
@@ -253,7 +253,7 @@
           },
           "attributes": {
             "BEL_STRENGTH": "00000000000000000000000000000001",
-            "NEXTPNR_BEL": "R17C1_IOBA",
+            "NEXTPNR_BEL": "R20C1_IOBB",
             "src": "../design/module.sv:2.23-2.27"
           },
           "port_directions": {
@@ -279,7 +279,7 @@
           },
           "attributes": {
             "BEL_STRENGTH": "00000000000000000000000000000001",
-            "NEXTPNR_BEL": "R16C1_IOBA",
+            "NEXTPNR_BEL": "R20C1_IOBA",
             "src": "../design/module.sv:2.23-2.27"
           },
           "port_directions": {
@@ -305,7 +305,7 @@
           },
           "attributes": {
             "BEL_STRENGTH": "00000000000000000000000000000110",
-            "NEXTPNR_BEL": "R16C1_IOBB",
+            "NEXTPNR_BEL": "R21C1_IOBB",
             "src": "../design/module.sv:3.24-3.30",
             "&DRIVE=8": "00000000000000000000000000000001",
             "&IO_TYPE=LVCMOS18": "00000000000000000000000000000001"
@@ -333,7 +333,7 @@
           },
           "attributes": {
             "BEL_STRENGTH": "00000000000000000000000000000110",
-            "NEXTPNR_BEL": "R21C1_IOBB",
+            "NEXTPNR_BEL": "R16C1_IOBB",
             "src": "../design/module.sv:3.24-3.30",
             "&DRIVE=8": "00000000000000000000000000000001",
             "&IO_TYPE=LVCMOS18": "00000000000000000000000000000001"
@@ -377,7 +377,7 @@
           },
           "attributes": {
             "BEL_STRENGTH": "00000000000000000000000000000110",
-            "NEXTPNR_BEL": "R22C1_IOBB",
+            "NEXTPNR_BEL": "R15C1_IOBA",
             "src": "../design/module.sv:3.24-3.30",
             "&DRIVE=8": "00000000000000000000000000000001",
             "&IO_TYPE=LVCMOS18": "00000000000000000000000000000001"
@@ -433,15 +433,15 @@
           "hide_name": 0,
           "bits": [ 3877483 ] ,
           "attributes": {
-            "ROUTING": "R16C2_F7;;1;R16C2_SN10;R16C2_F7_SN10;1;R15C2_W25;R15C2_N111_W250;1;R15C1_A0;R15C1_W251_A0;1"
+            "ROUTING": "R20C2_F1;;1;R20C2_W10;R20C2_F1_W100;1;R20C1_S20;R20C1_W101_S200;1;R22C1_D1;R22C1_S202_D1;1"
           }
         },
         "gray_IBUF_I_3_O[2]": {
           "hide_name": 0,
           "bits": [ 3877481 ] ,
           "attributes": {
-            "ROUTING": "R16C2_C7;R16C2_E242_C7;1;R17C1_F6;;1;R17C1_N10;R17C1_F6_N100;1;R16C1_W24;R16C1_N101_W240;1;R16C2_C1;R16C2_E242_C1;1",
-            "src": "C:\\Users\\achac\\OneDrive\\Escritorio\\Diseno\\oss-cad-suite\\bin\\../share/yosys/gowin/cells_map.v:130.20-130.21",
+            "ROUTING": "R20C2_C1;R20C2_E121_C1;1;R20C1_Q6;;1;R20C1_EW20;R20C1_Q6_EW20;1;R20C2_C5;R20C2_E121_C5;1",
+            "src": "C:\\OSS-CA~1\\bin\\../share/yosys/gowin/cells_map.v:130.20-130.21",
             "force_downto": "00000000000000000000000000000001"
           }
         },
@@ -449,8 +449,8 @@
           "hide_name": 0,
           "bits": [ 3877486 ] ,
           "attributes": {
-            "ROUTING": "R16C1_F6;;1;R16C1_E10;R16C1_F6_E100;1;R16C2_D7;R16C2_E101_D7;1",
-            "src": "C:\\Users\\achac\\OneDrive\\Escritorio\\Diseno\\oss-cad-suite\\bin\\../share/yosys/gowin/cells_map.v:130.20-130.21",
+            "ROUTING": "R20C1_F6;;1;R20C1_E10;R20C1_F6_E100;1;R20C2_D1;R20C2_E101_D1;1",
+            "src": "C:\\OSS-CA~1\\bin\\../share/yosys/gowin/cells_map.v:130.20-130.21",
             "force_downto": "00000000000000000000000000000001"
           }
         },
@@ -458,15 +458,15 @@
           "hide_name": 0,
           "bits": [ 3877478 ] ,
           "attributes": {
-            "ROUTING": "R16C2_F1;;1;R16C2_EW20;R16C2_F1_EW20;1;R16C1_D1;R16C1_W121_D1;1"
+            "ROUTING": "R20C2_F5;;1;R20C2_S10;R20C2_F5_S100;1;R21C2_W20;R21C2_S101_W200;1;R21C1_D1;R21C1_W201_D1;1"
           }
         },
         "gray_IBUF_I_3_O[1]": {
           "hide_name": 0,
           "bits": [ 3877475 ] ,
           "attributes": {
-            "ROUTING": "R16C2_X08;R16C2_N232_X08;1;R16C2_B7;R16C2_X08_B7;1;R18C2_N23;R18C2_E131_N230;1;R16C2_B1;R16C2_N232_B1;1;R18C1_Q6;;1;R18C1_E13;R18C1_Q6_E130;1;R18C2_S27;R18C2_E131_S270;1;R20C2_B7;R20C2_S272_B7;1",
-            "src": "C:\\Users\\achac\\OneDrive\\Escritorio\\Diseno\\oss-cad-suite\\bin\\../share/yosys/gowin/cells_map.v:130.20-130.21",
+            "ROUTING": "R20C2_X07;R20C2_S242_X07;1;R20C2_B1;R20C2_X07_B1;1;R18C2_N20;R18C2_E101_N200;1;R16C2_X07;R16C2_N202_X07;1;R16C2_B1;R16C2_X07_B1;1;R18C1_Q6;;1;R18C1_E10;R18C1_Q6_E100;1;R18C2_S24;R18C2_E101_S240;1;R20C2_X01;R20C2_S242_X01;1;R20C2_B5;R20C2_X01_B5;1",
+            "src": "C:\\OSS-CA~1\\bin\\../share/yosys/gowin/cells_map.v:130.20-130.21",
             "force_downto": "00000000000000000000000000000001"
           }
         },
@@ -481,7 +481,7 @@
           "hide_name": 0,
           "bits": [ 3877471 ] ,
           "attributes": {
-            "ROUTING": "R20C2_F7;;1;R20C2_EW20;R20C2_F7_EW20;1;R20C1_S22;R20C1_W121_S220;1;R21C1_D1;R21C1_S221_D1;1"
+            "ROUTING": "R16C2_F1;;1;R16C2_EW20;R16C2_F1_EW20;1;R16C1_D1;R16C1_W121_D1;1"
           }
         },
         "$PACKER_VCC_NET": {
@@ -495,8 +495,8 @@
           "hide_name": 0,
           "bits": [ 3877467 ] ,
           "attributes": {
-            "ROUTING": "R16C2_N20;R16C2_E808_N200;1;R16C2_A1;R16C2_N200_A1;1;R18C43_N26;R18C43_W262_N260;1;R16C43_W26;R16C43_N262_W260;1;R16C41_W27;R16C41_W262_W270;1;R16C39_W22;R16C39_W272_W220;1;R16C37_W22;R16C37_W222_W220;1;R16C35_W23;R16C35_W222_W230;1;R16C33_W26;R16C33_W232_W260;1;R16C31_W27;R16C31_W262_W270;1;R16C29_W27;R16C29_W272_W270;1;R16C27_W22;R16C27_W272_W220;1;R16C25_W23;R16C25_W222_W230;1;R16C23_W26;R16C23_W232_W260;1;R16C21_W27;R16C21_W262_W270;1;R16C19_W27;R16C19_W272_W270;1;R16C17_W27;R16C17_W272_W270;1;R16C15_W22;R16C15_W272_W220;1;R16C13_W23;R16C13_W222_W230;1;R16C11_W23;R16C11_W232_W230;1;R16C9_W23;R16C9_W232_W230;1;R16C7_W80;R16C7_W232_W800;1;R16C2_W20;R16C2_E808_W200;1;R16C2_A7;R16C2_W200_A7;1;R20C2_W10;R20C2_E838_W100;1;R20C1_S20;R20C1_W101_S200;1;R22C1_D1;R22C1_S202_D1;1;R18C47_F6;;1;R18C47_W26;R18C47_F6_W260;1;R18C45_W26;R18C45_W262_W260;1;R18C43_S26;R18C43_W262_S260;1;R20C43_W26;R20C43_S262_W260;1;R20C41_W27;R20C41_W262_W270;1;R20C39_W22;R20C39_W272_W220;1;R20C37_W22;R20C37_W222_W220;1;R20C35_W22;R20C35_W222_W220;1;R20C33_W23;R20C33_W222_W230;1;R20C31_W26;R20C31_W232_W260;1;R20C29_W27;R20C29_W262_W270;1;R20C27_W27;R20C27_W272_W270;1;R20C25_W27;R20C25_W272_W270;1;R20C23_W27;R20C23_W272_W270;1;R20C21_W22;R20C21_W272_W220;1;R20C19_W22;R20C19_W222_W220;1;R20C17_W22;R20C17_W222_W220;1;R20C15_W22;R20C15_W222_W220;1;R20C13_W23;R20C13_W222_W230;1;R20C11_W26;R20C11_W232_W260;1;R20C9_W26;R20C9_W262_W260;1;R20C7_W83;R20C7_W262_W830;1;R20C2_E13;R20C2_E838_E130;1;R20C2_A7;R20C2_E130_A7;1",
-            "src": "C:\\Users\\achac\\OneDrive\\Escritorio\\Diseno\\oss-cad-suite\\bin\\../share/yosys/gowin/cells_map.v:130.20-130.21",
+            "ROUTING": "R16C2_A1;R16C2_S271_A1;1;R15C2_S27;R15C2_W271_S270;1;R17C2_S27;R17C2_S272_S270;1;R19C2_S27;R19C2_S272_S270;1;R20C2_A1;R20C2_S271_A1;1;R15C39_W27;R15C39_W272_W270;1;R15C37_W22;R15C37_W272_W220;1;R15C35_W22;R15C35_W222_W220;1;R15C33_W23;R15C33_W222_W230;1;R15C31_W26;R15C31_W232_W260;1;R15C29_W27;R15C29_W262_W270;1;R15C27_W22;R15C27_W272_W220;1;R15C25_W22;R15C25_W222_W220;1;R15C23_W22;R15C23_W222_W220;1;R15C21_W22;R15C21_W222_W220;1;R15C19_W22;R15C19_W222_W220;1;R15C17_W22;R15C17_W222_W220;1;R15C15_W22;R15C15_W222_W220;1;R15C13_W23;R15C13_W222_W230;1;R15C11_W26;R15C11_W232_W260;1;R15C9_W26;R15C9_W262_W260;1;R15C7_W26;R15C7_W262_W260;1;R15C5_W27;R15C5_W262_W270;1;R15C3_W27;R15C3_W272_W270;1;R15C1_A0;R15C1_W272_A0;1;R15C47_F6;;1;R15C47_W26;R15C47_F6_W260;1;R15C45_W26;R15C45_W262_W260;1;R15C43_W27;R15C43_W262_W270;1;R15C41_W27;R15C41_W272_W270;1;R15C39_S27;R15C39_W272_S270;1;R17C39_S22;R17C39_S272_S220;1;R19C39_W22;R19C39_S222_W220;1;R19C37_W22;R19C37_W222_W220;1;R19C35_W22;R19C35_W222_W220;1;R19C33_W23;R19C33_W222_W230;1;R19C31_W26;R19C31_W232_W260;1;R19C29_W27;R19C29_W262_W270;1;R19C27_W27;R19C27_W272_W270;1;R19C25_W22;R19C25_W272_W220;1;R19C23_W22;R19C23_W222_W220;1;R19C21_W23;R19C21_W222_W230;1;R19C19_W26;R19C19_W232_W260;1;R19C17_W26;R19C17_W262_W260;1;R19C15_W26;R19C15_W262_W260;1;R19C13_W26;R19C13_W262_W260;1;R19C11_W26;R19C11_W262_W260;1;R19C9_W26;R19C9_W262_W260;1;R19C7_W83;R19C7_W262_W830;1;R19C2_S26;R19C2_E838_S260;1;R20C2_X05;R20C2_S261_X05;1;R20C2_A5;R20C2_X05_A5;1",
+            "src": "C:\\OSS-CA~1\\bin\\../share/yosys/gowin/cells_map.v:130.20-130.21",
             "force_downto": "00000000000000000000000000000001"
           }
         }
