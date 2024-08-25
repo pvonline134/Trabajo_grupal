@@ -109,255 +109,259 @@ Removed 0 unused modules.
 2.3. Executing PROC pass (convert processes to netlists).
 
 2.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
-Found and cleaned up 1 empty switch in `\ALU.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:661$229'.
+Found and cleaned up 1 empty switch in `\ALU.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:661$234'.
 Cleaned up 1 empty switch.
 
 2.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:535$225 in module DFFNCE.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:515$223 in module DFFNC.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:496$221 in module DFFNPE.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:476$219 in module DFFNP.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:457$217 in module DFFNRE.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:437$215 in module DFFNR.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:418$213 in module DFFNSE.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:398$211 in module DFFNS.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:348$205 in module DFFCE.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:328$203 in module DFFC.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:309$201 in module DFFPE.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:289$199 in module DFFP.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:270$197 in module DFFRE.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:250$195 in module DFFR.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:231$193 in module DFFSE.
-Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:211$191 in module DFFS.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:535$230 in module DFFNCE.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:515$228 in module DFFNC.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:496$226 in module DFFNPE.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:476$224 in module DFFNP.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:457$222 in module DFFNRE.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:437$220 in module DFFNR.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:418$218 in module DFFNSE.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:398$216 in module DFFNS.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:348$210 in module DFFCE.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:328$208 in module DFFC.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:309$206 in module DFFPE.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:289$204 in module DFFP.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:270$202 in module DFFRE.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:250$200 in module DFFR.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:231$198 in module DFFSE.
+Marked 1 switch rules as full_case in process $proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:211$196 in module DFFS.
 Removed a total of 0 dead cases.
 
 2.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
 Removed 8 redundant assignments.
-Promoted 26 assignments to connections.
+Promoted 34 assignments to connections.
 
 2.3.4. Executing PROC_INIT pass (extract init attributes).
-Found init rule in `\DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$226'.
+Found init rule in `\DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$231'.
   Set init value: \Q = 1'0
-Found init rule in `\DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$224'.
+Found init rule in `\DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$229'.
   Set init value: \Q = 1'0
-Found init rule in `\DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$222'.
+Found init rule in `\DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$227'.
   Set init value: \Q = 1'1
-Found init rule in `\DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$220'.
+Found init rule in `\DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$225'.
   Set init value: \Q = 1'1
-Found init rule in `\DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$218'.
+Found init rule in `\DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$223'.
   Set init value: \Q = 1'0
-Found init rule in `\DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$216'.
+Found init rule in `\DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$221'.
   Set init value: \Q = 1'0
-Found init rule in `\DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$214'.
+Found init rule in `\DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$219'.
   Set init value: \Q = 1'1
-Found init rule in `\DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$212'.
+Found init rule in `\DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$217'.
   Set init value: \Q = 1'1
-Found init rule in `\DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$210'.
+Found init rule in `\DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$215'.
   Set init value: \Q = 1'0
-Found init rule in `\DFFN.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$208'.
+Found init rule in `\DFFN.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$213'.
   Set init value: \Q = 1'0
-Found init rule in `\DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$206'.
+Found init rule in `\DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$211'.
   Set init value: \Q = 1'0
-Found init rule in `\DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$204'.
+Found init rule in `\DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$209'.
   Set init value: \Q = 1'0
-Found init rule in `\DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$202'.
+Found init rule in `\DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$207'.
   Set init value: \Q = 1'1
-Found init rule in `\DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$200'.
+Found init rule in `\DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$205'.
   Set init value: \Q = 1'1
-Found init rule in `\DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$198'.
+Found init rule in `\DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$203'.
   Set init value: \Q = 1'0
-Found init rule in `\DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$196'.
+Found init rule in `\DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$201'.
   Set init value: \Q = 1'0
-Found init rule in `\DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$194'.
+Found init rule in `\DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$199'.
   Set init value: \Q = 1'1
-Found init rule in `\DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$192'.
+Found init rule in `\DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$197'.
   Set init value: \Q = 1'1
-Found init rule in `\DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$190'.
+Found init rule in `\DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$195'.
   Set init value: \Q = 1'0
-Found init rule in `\DFF.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$188'.
+Found init rule in `\DFF.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$193'.
   Set init value: \Q = 1'0
 
 2.3.5. Executing PROC_ARST pass (detect async resets in processes).
-Found async reset \CLEAR in `\DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:535$225'.
-Found async reset \CLEAR in `\DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:515$223'.
-Found async reset \PRESET in `\DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:496$221'.
-Found async reset \PRESET in `\DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:476$219'.
-Found async reset \CLEAR in `\DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:348$205'.
-Found async reset \CLEAR in `\DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:328$203'.
-Found async reset \PRESET in `\DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:309$201'.
-Found async reset \PRESET in `\DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:289$199'.
+Found async reset \CLEAR in `\DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:535$230'.
+Found async reset \CLEAR in `\DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:515$228'.
+Found async reset \PRESET in `\DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:496$226'.
+Found async reset \PRESET in `\DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:476$224'.
+Found async reset \CLEAR in `\DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:348$210'.
+Found async reset \CLEAR in `\DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:328$208'.
+Found async reset \PRESET in `\DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:309$206'.
+Found async reset \PRESET in `\DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:289$204'.
 
 2.3.6. Executing PROC_ROM pass (convert switches to ROMs).
 Converted 0 switches.
 <suppressed ~18 debug messages>
 
 2.3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
-Creating decoders for process `\ALU.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:661$229'.
-Creating decoders for process `\DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$226'.
-Creating decoders for process `\DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:535$225'.
+Creating decoders for process `\ALU.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:661$234'.
+Creating decoders for process `\DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$231'.
+Creating decoders for process `\DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:535$230'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$224'.
-Creating decoders for process `\DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:515$223'.
+Creating decoders for process `\DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$229'.
+Creating decoders for process `\DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:515$228'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$222'.
-Creating decoders for process `\DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:496$221'.
+Creating decoders for process `\DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$227'.
+Creating decoders for process `\DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:496$226'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$220'.
-Creating decoders for process `\DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:476$219'.
+Creating decoders for process `\DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$225'.
+Creating decoders for process `\DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:476$224'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$218'.
-Creating decoders for process `\DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:457$217'.
+Creating decoders for process `\DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$223'.
+Creating decoders for process `\DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:457$222'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$216'.
-Creating decoders for process `\DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:437$215'.
+Creating decoders for process `\DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$221'.
+Creating decoders for process `\DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:437$220'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$214'.
-Creating decoders for process `\DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:418$213'.
+Creating decoders for process `\DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$219'.
+Creating decoders for process `\DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:418$218'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$212'.
-Creating decoders for process `\DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:398$211'.
+Creating decoders for process `\DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$217'.
+Creating decoders for process `\DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:398$216'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$210'.
-Creating decoders for process `\DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:381$209'.
+Creating decoders for process `\DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$215'.
+Creating decoders for process `\DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:381$214'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFN.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$208'.
-Creating decoders for process `\DFFN.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:366$207'.
-Creating decoders for process `\DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$206'.
-Creating decoders for process `\DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:348$205'.
+Creating decoders for process `\DFFN.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$213'.
+Creating decoders for process `\DFFN.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:366$212'.
+Creating decoders for process `\DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$211'.
+Creating decoders for process `\DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:348$210'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$204'.
-Creating decoders for process `\DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:328$203'.
+Creating decoders for process `\DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$209'.
+Creating decoders for process `\DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:328$208'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$202'.
-Creating decoders for process `\DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:309$201'.
+Creating decoders for process `\DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$207'.
+Creating decoders for process `\DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:309$206'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$200'.
-Creating decoders for process `\DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:289$199'.
+Creating decoders for process `\DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$205'.
+Creating decoders for process `\DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:289$204'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$198'.
-Creating decoders for process `\DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:270$197'.
+Creating decoders for process `\DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$203'.
+Creating decoders for process `\DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:270$202'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$196'.
-Creating decoders for process `\DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:250$195'.
+Creating decoders for process `\DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$201'.
+Creating decoders for process `\DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:250$200'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$194'.
-Creating decoders for process `\DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:231$193'.
+Creating decoders for process `\DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$199'.
+Creating decoders for process `\DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:231$198'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$192'.
-Creating decoders for process `\DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:211$191'.
+Creating decoders for process `\DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$197'.
+Creating decoders for process `\DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:211$196'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$190'.
-Creating decoders for process `\DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:194$189'.
+Creating decoders for process `\DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$195'.
+Creating decoders for process `\DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:194$194'.
      1/1: $0\Q[0:0]
-Creating decoders for process `\DFF.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$188'.
-Creating decoders for process `\DFF.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:179$187'.
+Creating decoders for process `\DFF.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$193'.
+Creating decoders for process `\DFF.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:179$192'.
+Creating decoders for process `\gray_to_binary_leds.$proc$../design/module.sv:0$1'.
 
 2.3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\gray_to_binary_leds.\binary' from process `\gray_to_binary_leds.$proc$../design/module.sv:0$1'.
+No latch inferred for signal `\gray_to_binary_leds.\leds' from process `\gray_to_binary_leds.$proc$../design/module.sv:0$1'.
 
 2.3.9. Executing PROC_DFF pass (convert process syncs to FFs).
-Creating register for signal `\ALU.\C' using process `\ALU.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:661$229'.
+Creating register for signal `\ALU.\C' using process `\ALU.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:661$234'.
   created direct connection (no actual register cell created).
-Creating register for signal `\ALU.\S' using process `\ALU.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:661$229'.
+Creating register for signal `\ALU.\S' using process `\ALU.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:661$234'.
   created direct connection (no actual register cell created).
-Creating register for signal `\DFFNCE.\Q' using process `\DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:535$225'.
-  created $adff cell `$procdff$317' with negative edge clock and positive level reset.
-Creating register for signal `\DFFNC.\Q' using process `\DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:515$223'.
-  created $adff cell `$procdff$318' with negative edge clock and positive level reset.
-Creating register for signal `\DFFNPE.\Q' using process `\DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:496$221'.
-  created $adff cell `$procdff$319' with negative edge clock and positive level reset.
-Creating register for signal `\DFFNP.\Q' using process `\DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:476$219'.
-  created $adff cell `$procdff$320' with negative edge clock and positive level reset.
-Creating register for signal `\DFFNRE.\Q' using process `\DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:457$217'.
-  created $dff cell `$procdff$321' with negative edge clock.
-Creating register for signal `\DFFNR.\Q' using process `\DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:437$215'.
-  created $dff cell `$procdff$322' with negative edge clock.
-Creating register for signal `\DFFNSE.\Q' using process `\DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:418$213'.
-  created $dff cell `$procdff$323' with negative edge clock.
-Creating register for signal `\DFFNS.\Q' using process `\DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:398$211'.
-  created $dff cell `$procdff$324' with negative edge clock.
-Creating register for signal `\DFFNE.\Q' using process `\DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:381$209'.
-  created $dff cell `$procdff$325' with negative edge clock.
-Creating register for signal `\DFFN.\Q' using process `\DFFN.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:366$207'.
+Creating register for signal `\DFFNCE.\Q' using process `\DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:535$230'.
+  created $adff cell `$procdff$322' with negative edge clock and positive level reset.
+Creating register for signal `\DFFNC.\Q' using process `\DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:515$228'.
+  created $adff cell `$procdff$323' with negative edge clock and positive level reset.
+Creating register for signal `\DFFNPE.\Q' using process `\DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:496$226'.
+  created $adff cell `$procdff$324' with negative edge clock and positive level reset.
+Creating register for signal `\DFFNP.\Q' using process `\DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:476$224'.
+  created $adff cell `$procdff$325' with negative edge clock and positive level reset.
+Creating register for signal `\DFFNRE.\Q' using process `\DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:457$222'.
   created $dff cell `$procdff$326' with negative edge clock.
-Creating register for signal `\DFFCE.\Q' using process `\DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:348$205'.
-  created $adff cell `$procdff$327' with positive edge clock and positive level reset.
-Creating register for signal `\DFFC.\Q' using process `\DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:328$203'.
-  created $adff cell `$procdff$328' with positive edge clock and positive level reset.
-Creating register for signal `\DFFPE.\Q' using process `\DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:309$201'.
-  created $adff cell `$procdff$329' with positive edge clock and positive level reset.
-Creating register for signal `\DFFP.\Q' using process `\DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:289$199'.
-  created $adff cell `$procdff$330' with positive edge clock and positive level reset.
-Creating register for signal `\DFFRE.\Q' using process `\DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:270$197'.
-  created $dff cell `$procdff$331' with positive edge clock.
-Creating register for signal `\DFFR.\Q' using process `\DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:250$195'.
-  created $dff cell `$procdff$332' with positive edge clock.
-Creating register for signal `\DFFSE.\Q' using process `\DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:231$193'.
-  created $dff cell `$procdff$333' with positive edge clock.
-Creating register for signal `\DFFS.\Q' using process `\DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:211$191'.
-  created $dff cell `$procdff$334' with positive edge clock.
-Creating register for signal `\DFFE.\Q' using process `\DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:194$189'.
-  created $dff cell `$procdff$335' with positive edge clock.
-Creating register for signal `\DFF.\Q' using process `\DFF.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:179$187'.
+Creating register for signal `\DFFNR.\Q' using process `\DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:437$220'.
+  created $dff cell `$procdff$327' with negative edge clock.
+Creating register for signal `\DFFNSE.\Q' using process `\DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:418$218'.
+  created $dff cell `$procdff$328' with negative edge clock.
+Creating register for signal `\DFFNS.\Q' using process `\DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:398$216'.
+  created $dff cell `$procdff$329' with negative edge clock.
+Creating register for signal `\DFFNE.\Q' using process `\DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:381$214'.
+  created $dff cell `$procdff$330' with negative edge clock.
+Creating register for signal `\DFFN.\Q' using process `\DFFN.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:366$212'.
+  created $dff cell `$procdff$331' with negative edge clock.
+Creating register for signal `\DFFCE.\Q' using process `\DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:348$210'.
+  created $adff cell `$procdff$332' with positive edge clock and positive level reset.
+Creating register for signal `\DFFC.\Q' using process `\DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:328$208'.
+  created $adff cell `$procdff$333' with positive edge clock and positive level reset.
+Creating register for signal `\DFFPE.\Q' using process `\DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:309$206'.
+  created $adff cell `$procdff$334' with positive edge clock and positive level reset.
+Creating register for signal `\DFFP.\Q' using process `\DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:289$204'.
+  created $adff cell `$procdff$335' with positive edge clock and positive level reset.
+Creating register for signal `\DFFRE.\Q' using process `\DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:270$202'.
   created $dff cell `$procdff$336' with positive edge clock.
+Creating register for signal `\DFFR.\Q' using process `\DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:250$200'.
+  created $dff cell `$procdff$337' with positive edge clock.
+Creating register for signal `\DFFSE.\Q' using process `\DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:231$198'.
+  created $dff cell `$procdff$338' with positive edge clock.
+Creating register for signal `\DFFS.\Q' using process `\DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:211$196'.
+  created $dff cell `$procdff$339' with positive edge clock.
+Creating register for signal `\DFFE.\Q' using process `\DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:194$194'.
+  created $dff cell `$procdff$340' with positive edge clock.
+Creating register for signal `\DFF.\Q' using process `\DFF.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:179$192'.
+  created $dff cell `$procdff$341' with positive edge clock.
 
 2.3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
 
 2.3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
-Removing empty process `ALU.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:661$229'.
-Removing empty process `DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$226'.
-Found and cleaned up 1 empty switch in `\DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:535$225'.
-Removing empty process `DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:535$225'.
-Removing empty process `DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$224'.
-Removing empty process `DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:515$223'.
-Removing empty process `DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$222'.
-Found and cleaned up 1 empty switch in `\DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:496$221'.
-Removing empty process `DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:496$221'.
-Removing empty process `DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$220'.
-Removing empty process `DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:476$219'.
-Removing empty process `DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$218'.
-Found and cleaned up 2 empty switches in `\DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:457$217'.
-Removing empty process `DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:457$217'.
-Removing empty process `DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$216'.
-Found and cleaned up 1 empty switch in `\DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:437$215'.
-Removing empty process `DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:437$215'.
-Removing empty process `DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$214'.
-Found and cleaned up 2 empty switches in `\DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:418$213'.
-Removing empty process `DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:418$213'.
-Removing empty process `DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$212'.
-Found and cleaned up 1 empty switch in `\DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:398$211'.
-Removing empty process `DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:398$211'.
-Removing empty process `DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$210'.
-Found and cleaned up 1 empty switch in `\DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:381$209'.
-Removing empty process `DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:381$209'.
-Removing empty process `DFFN.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$208'.
-Removing empty process `DFFN.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:366$207'.
-Removing empty process `DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$206'.
-Found and cleaned up 1 empty switch in `\DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:348$205'.
-Removing empty process `DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:348$205'.
-Removing empty process `DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$204'.
-Removing empty process `DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:328$203'.
-Removing empty process `DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$202'.
-Found and cleaned up 1 empty switch in `\DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:309$201'.
-Removing empty process `DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:309$201'.
-Removing empty process `DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$200'.
-Removing empty process `DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:289$199'.
-Removing empty process `DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$198'.
-Found and cleaned up 2 empty switches in `\DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:270$197'.
-Removing empty process `DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:270$197'.
-Removing empty process `DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$196'.
-Found and cleaned up 1 empty switch in `\DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:250$195'.
-Removing empty process `DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:250$195'.
-Removing empty process `DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$194'.
-Found and cleaned up 2 empty switches in `\DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:231$193'.
-Removing empty process `DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:231$193'.
-Removing empty process `DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$192'.
-Found and cleaned up 1 empty switch in `\DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:211$191'.
-Removing empty process `DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:211$191'.
-Removing empty process `DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$190'.
-Found and cleaned up 1 empty switch in `\DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:194$189'.
-Removing empty process `DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:194$189'.
-Removing empty process `DFF.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$188'.
-Removing empty process `DFF.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:179$187'.
+Removing empty process `ALU.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:661$234'.
+Removing empty process `DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$231'.
+Found and cleaned up 1 empty switch in `\DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:535$230'.
+Removing empty process `DFFNCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:535$230'.
+Removing empty process `DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$229'.
+Removing empty process `DFFNC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:515$228'.
+Removing empty process `DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$227'.
+Found and cleaned up 1 empty switch in `\DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:496$226'.
+Removing empty process `DFFNPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:496$226'.
+Removing empty process `DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$225'.
+Removing empty process `DFFNP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:476$224'.
+Removing empty process `DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$223'.
+Found and cleaned up 2 empty switches in `\DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:457$222'.
+Removing empty process `DFFNRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:457$222'.
+Removing empty process `DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$221'.
+Found and cleaned up 1 empty switch in `\DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:437$220'.
+Removing empty process `DFFNR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:437$220'.
+Removing empty process `DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$219'.
+Found and cleaned up 2 empty switches in `\DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:418$218'.
+Removing empty process `DFFNSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:418$218'.
+Removing empty process `DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$217'.
+Found and cleaned up 1 empty switch in `\DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:398$216'.
+Removing empty process `DFFNS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:398$216'.
+Removing empty process `DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$215'.
+Found and cleaned up 1 empty switch in `\DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:381$214'.
+Removing empty process `DFFNE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:381$214'.
+Removing empty process `DFFN.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$213'.
+Removing empty process `DFFN.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:366$212'.
+Removing empty process `DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$211'.
+Found and cleaned up 1 empty switch in `\DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:348$210'.
+Removing empty process `DFFCE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:348$210'.
+Removing empty process `DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$209'.
+Removing empty process `DFFC.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:328$208'.
+Removing empty process `DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$207'.
+Found and cleaned up 1 empty switch in `\DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:309$206'.
+Removing empty process `DFFPE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:309$206'.
+Removing empty process `DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$205'.
+Removing empty process `DFFP.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:289$204'.
+Removing empty process `DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$203'.
+Found and cleaned up 2 empty switches in `\DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:270$202'.
+Removing empty process `DFFRE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:270$202'.
+Removing empty process `DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$201'.
+Found and cleaned up 1 empty switch in `\DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:250$200'.
+Removing empty process `DFFR.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:250$200'.
+Removing empty process `DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$199'.
+Found and cleaned up 2 empty switches in `\DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:231$198'.
+Removing empty process `DFFSE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:231$198'.
+Removing empty process `DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$197'.
+Found and cleaned up 1 empty switch in `\DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:211$196'.
+Removing empty process `DFFS.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:211$196'.
+Removing empty process `DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$195'.
+Found and cleaned up 1 empty switch in `\DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:194$194'.
+Removing empty process `DFFE.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:194$194'.
+Removing empty process `DFF.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:0$193'.
+Removing empty process `DFF.$proc$C:\Users\achac\OneDrive\Escritorio\Diseno\oss-cad-suite\bin\../share/yosys/gowin/cells_sim.v:179$192'.
+Removing empty process `gray_to_binary_leds.$proc$../design/module.sv:0$1'.
 Cleaned up 18 empty switches.
 
 2.3.12. Executing OPT_EXPR pass (perform const folding).
@@ -409,7 +413,7 @@ Optimizing module gray_to_binary_leds.
 
 2.7.3. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \gray_to_binary_leds..
-Removed 0 unused cells and 3 unused wires.
+Removed 0 unused cells and 9 unused wires.
 <suppressed ~1 debug messages>
 
 2.7.4. Executing CHECK pass (checking for obvious problems).
@@ -685,8 +689,9 @@ Successfully finished Verilog frontend.
 
 2.13.3. Continuing TECHMAP pass.
 Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $not.
 No more expansions possible.
-<suppressed ~76 debug messages>
+<suppressed ~80 debug messages>
 
 2.14. Executing OPT pass (performing simple optimizations).
 
@@ -707,6 +712,7 @@ Finding unused cells or wires in module \gray_to_binary_leds..
 2.15. Executing IOPADMAP pass (mapping inputs/outputs to IO-PAD cells).
 Mapping port gray_to_binary_leds.binary using OBUF.
 Mapping port gray_to_binary_leds.gray using IBUF.
+Mapping port gray_to_binary_leds.leds using OBUF.
 
 2.16. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \gray_to_binary_leds..
@@ -752,7 +758,7 @@ Optimizing module gray_to_binary_leds.
 2.21. Executing ABC pass (technology mapping using ABC).
 
 2.21.1. Extracting gate netlist of module `\gray_to_binary_leds' to `<abc-temp-dir>/input.blif'..
-Extracted 3 gates and 7 wires to a netlist network with 4 inputs and 3 outputs.
+Extracted 7 gates and 11 wires to a netlist network with 4 inputs and 7 outputs.
 
 2.21.1.1. Executing ABC.
 Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
@@ -775,12 +781,12 @@ ABC: + mfs2
 ABC: + write_blif <abc-temp-dir>/output.blif 
 
 2.21.1.2. Re-integrating ABC results.
-ABC RESULTS:              $lut cells:        3
+ABC RESULTS:              $lut cells:        7
 ABC RESULTS:        internal signals:        0
 ABC RESULTS:           input signals:        4
-ABC RESULTS:          output signals:        3
+ABC RESULTS:          output signals:        7
 Removing temp directory.
-Removed 0 unused cells and 2 unused wires.
+Removed 0 unused cells and 3 unused wires.
 
 2.22. Executing TECHMAP pass (map to technology primitives).
 
@@ -810,11 +816,15 @@ Generating RTLIL representation for module `\$lut'.
 Successfully finished Verilog frontend.
 
 2.22.2. Continuing TECHMAP pass.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0110 for cells of type $lut.
-Using template $paramod$fd904e9e35cfd343a9df248824bd3f1408724879\$lut for cells of type $lut.
 Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10010110 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1001 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0110 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000001\LUT=2'01 for cells of type $lut.
+Using template $paramod$4282def8dbd6df3d1248ad282c629bee684502c2\$lut for cells of type $lut.
+Using template $paramod$fd904e9e35cfd343a9df248824bd3f1408724879\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01101001 for cells of type $lut.
 No more expansions possible.
-<suppressed ~65 debug messages>
+<suppressed ~121 debug messages>
 
 2.23. Executing OPT_LUT_INS pass (discard unused LUT inputs).
 Optimizing LUTs in gray_to_binary_leds.
@@ -822,11 +832,11 @@ Optimizing LUTs in gray_to_binary_leds.
 2.24. Executing SETUNDEF pass (replace undef values with defined constants).
 
 2.25. Executing HILOMAP pass (mapping to constant drivers).
-Removed 1 unused cells and 9 unused wires.
+Removed 1 unused cells and 17 unused wires.
 
 2.26. Executing AUTONAME pass.
-Renamed 21 objects in module gray_to_binary_leds (4 iterations).
-<suppressed ~16 debug messages>
+Renamed 33 objects in module gray_to_binary_leds (4 iterations).
+<suppressed ~28 debug messages>
 
 2.27. Executing HIERARCHY pass (managing design hierarchy).
 
@@ -841,19 +851,20 @@ Removed 0 unused modules.
 
 === gray_to_binary_leds ===
 
-   Number of wires:                  7
-   Number of wire bits:             17
-   Number of public wires:           7
-   Number of public wire bits:      17
+   Number of wires:                 12
+   Number of wire bits:             26
+   Number of public wires:          12
+   Number of public wire bits:      26
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                 11
+   Number of cells:                 19
      IBUF                            4
-     LUT2                            1
-     LUT3                            1
-     LUT4                            1
-     OBUF                            4
+     LUT1                            1
+     LUT2                            2
+     LUT3                            2
+     LUT4                            2
+     OBUF                            8
 
 2.29. Executing CHECK pass (checking for obvious problems).
 Checking module gray_to_binary_leds...
@@ -861,6 +872,6 @@ Found and reported 0 problems.
 
 2.30. Executing JSON backend.
 
-End of script. Logfile hash: 68a01a2790
+End of script. Logfile hash: 6c4669ecfa
 Yosys 0.26+1 (git sha1 b1a011138, x86_64-w64-mingw32-g++ 9.2.1 -Os)
 Time spent: 1% 14x opt_expr (0 sec), 1% 13x opt_clean (0 sec), ...
