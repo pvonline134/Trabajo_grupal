@@ -5,8 +5,7 @@ module binary_to_7segm (
 
 );
 
-always @(*) 
-begin
+always_comb begin
         case(binary)
             4'b0000: segments = 7'b1111110; // "0"  
             4'b0001: segments = 7'b0110000; // "1" 
@@ -23,5 +22,4 @@ begin
 end
 endmodule
     
-
 
