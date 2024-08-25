@@ -1,0 +1,20 @@
+IO_LOC  "segments[0]" 29;
+IO_PORT "segments[0]" DRIVE=8;
+
+IO_LOC  "segments[1]" 30;
+IO_PORT "segments[1]" DRIVE=8;
+
+IO_LOC  "segments[2]" 33;
+IO_PORT "segments[2]" DRIVE=8;
+
+IO_LOC  "segments[3]" 34;
+IO_PORT "segments[3]" DRIVE=8;
+
+IO_LOC  "segments[4]" 40;
+IO_PORT "segments[4]" DRIVE=8;
+
+IO_LOC  "segments[5]" 35;
+IO_PORT "segments[5]" DRIVE=8;
+
+IO_LOC  "segments[6]" 41;
+IO_PORT "segments[6]" DRIVE=8;
