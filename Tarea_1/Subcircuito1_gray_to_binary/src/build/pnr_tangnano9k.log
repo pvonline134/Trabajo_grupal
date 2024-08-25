@@ -15,17 +15,10 @@ Info: Packing ALUs..
 Info: Packing LUT-FFs..
 Info: Packing non-LUT FFs..
 Info: Packing PLLs..
-<<<<<<< HEAD
 Info: Checksum: 0x4862df2e
 
 Info: Annotating ports with timing budgets for target frequency 27.00 MHz
 Info: Checksum: 0x4862df2e
-=======
-Info: Checksum: 0x3d70bc25
-
-Info: Annotating ports with timing budgets for target frequency 27.00 MHz
-Info: Checksum: 0x3d70bc25
->>>>>>> 9681a4e245492a82ea32249ce77e2b6d99b5e8e9
 
 Info: Device utilisation:
 Info: 	                 VCC:     1/    1   100%
@@ -42,7 +35,6 @@ Info: 	                 GSR:     1/    1   100%
 Info: 	                 OSC:     0/    1     0%
 Info: 	                rPLL:     0/    2     0%
 
-<<<<<<< HEAD
 Info: Placed 8 cells based on constraints.
 Info: Creating initial analytic placement for 9 cells, random placement wirelen = 446.
 Info:     at initial placer iter 0, wirelen = 124
@@ -55,8 +47,8 @@ Info:     at iteration #1, type VCC: wirelen solved = 137, spread = 137, legal =
 Info:     at iteration #1, type GSR: wirelen solved = 137, spread = 137, legal = 137; time = 0.00s
 Info:     at iteration #1, type ALL: wirelen solved = 123, spread = 126, legal = 129; time = 0.00s
 Info: HeAP Placer Time: 0.03s
-Info:   of which solving equations: 0.01s
-Info:   of which spreading cells: 0.01s
+Info:   of which solving equations: 0.00s
+Info:   of which spreading cells: 0.00s
 Info:   of which strict legalisation: 0.00s
 
 Info: Running simulated annealing placer for refinement.
@@ -67,38 +59,10 @@ Info:   at iteration #14: temp = 0.000000, timing cost = 0, wirelen = 82
 Info: SA placement time 0.00s
 
 Info: Max delay <async> -> <async>: 11.50 ns
-=======
-Info: Placed 4 cells based on constraints.
-Info: Creating initial analytic placement for 5 cells, random placement wirelen = 260.
-Info:     at initial placer iter 0, wirelen = 198
-Info:     at initial placer iter 1, wirelen = 198
-Info:     at initial placer iter 2, wirelen = 198
-Info:     at initial placer iter 3, wirelen = 198
-Info: Running main analytical placer, max placement attempts per cell = 10000.
-Info:     at iteration #1, type SLICE: wirelen solved = 198, spread = 198, legal = 196; time = 0.00s
-Info:     at iteration #1, type VCC: wirelen solved = 196, spread = 196, legal = 196; time = 0.00s
-Info:     at iteration #1, type GSR: wirelen solved = 196, spread = 196, legal = 196; time = 0.00s
-Info:     at iteration #1, type ALL: wirelen solved = 198, spread = 198, legal = 197; time = 0.00s
-Info: HeAP Placer Time: 0.01s
-Info:   of which solving equations: 0.00s
-Info:   of which spreading cells: 0.00s
-Info:   of which strict legalisation: 0.00s
-
-Info: Running simulated annealing placer for refinement.
-Info:   at iteration #1: temp = 0.000000, timing cost = 0, wirelen = 197
-Info:   at iteration #5: temp = 0.000000, timing cost = 0, wirelen = 97
-Info:   at iteration #10: temp = 0.000000, timing cost = 0, wirelen = 64
-Info:   at iteration #15: temp = 0.000000, timing cost = 0, wirelen = 64
-Info:   at iteration #19: temp = 0.000000, timing cost = 0, wirelen = 64 
-Info: SA placement time 0.00s
-
-Info: Max delay <async> -> <async>: 23.03 ns
->>>>>>> 9681a4e245492a82ea32249ce77e2b6d99b5e8e9
 
 Info: Slack histogram:
 Info:  legend: * represents 1 endpoint(s)
 Info:          + represents [1,1) endpoint(s)
-<<<<<<< HEAD
 Info: [ 25539,  26034) |** 
 Info: [ 26034,  26529) | 
 Info: [ 26529,  27024) | 
@@ -120,29 +84,6 @@ Info: [ 33954,  34449) |**
 Info: [ 34449,  34944) | 
 Info: [ 34944,  35439) |***** 
 Info: Checksum: 0xd763fed9
-=======
-Info: [ 14006,  15118) |** 
-Info: [ 15118,  16230) | 
-Info: [ 16230,  17342) |*** 
-Info: [ 17342,  18454) |** 
-Info: [ 18454,  19566) | 
-Info: [ 19566,  20678) | 
-Info: [ 20678,  21790) | 
-Info: [ 21790,  22902) | 
-Info: [ 22902,  24014) | 
-Info: [ 24014,  25126) | 
-Info: [ 25126,  26238) | 
-Info: [ 26238,  27350) | 
-Info: [ 27350,  28462) | 
-Info: [ 28462,  29574) | 
-Info: [ 29574,  30686) | 
-Info: [ 30686,  31798) | 
-Info: [ 31798,  32910) | 
-Info: [ 32910,  34022) | 
-Info: [ 34022,  35134) | 
-Info: [ 35134,  36246) |****** 
-Info: Checksum: 0xfaf8dc56
->>>>>>> 9681a4e245492a82ea32249ce77e2b6d99b5e8e9
 Info: Find global nets...
 Info: Routing globals...
 
@@ -151,7 +92,6 @@ Info: Setting up routing queue.
 Info: Routing 28 arcs.
 Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
 Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
-<<<<<<< HEAD
 Info:         29 |        1         28 |    1    28 |         0|       0.06       0.06|
 Info: Routing complete.
 Info: Router1 time 0.06s
@@ -170,31 +110,10 @@ Info:                Sink leds_OBUF_O_3$iob.I
 Info: 1.1 ns logic, 6.6 ns routing
 
 Info: Max delay <async> -> <async>: 7.65 ns
-=======
-Info:         14 |        0         14 |    0    14 |         0|       0.03       0.03|
-Info: Routing complete.
-Info: Router1 time 0.03s
-Info: Checksum: 0xd3aa71c3
-
-Info: Critical path report for cross-domain path '<async>' -> '<async>':
-Info: curr total
-Info:  0.0  0.0  Source gray_IBUF_I$iob.O
-Info: 12.5 12.5    Net gray_IBUF_I_3_O[0] budget 37.037037 ns (46,14) -> (1,19)
-Info:                Sink binary_OBUF_O_3_I_LUT4_F_LC.A
-Info:                Defined in:
-Info:                  C:\OSS-CA~1\bin\../share/yosys/gowin/cells_map.v:130.20-130.21
-Info:  1.0 13.5  Source binary_OBUF_O_3_I_LUT4_F_LC.F
-Info:  0.9 14.4    Net binary_OBUF_O_3_I budget 17.969519 ns (1,19) -> (0,21)
-Info:                Sink binary_OBUF_O_3$iob.I
-Info: 1.0 ns logic, 13.3 ns routing
-
-Info: Max delay <async> -> <async>: 14.38 ns
->>>>>>> 9681a4e245492a82ea32249ce77e2b6d99b5e8e9
 
 Info: Slack histogram:
 Info:  legend: * represents 1 endpoint(s)
 Info:          + represents [1,1) endpoint(s)
-<<<<<<< HEAD
 Info: [ 29386,  29725) |* 
 Info: [ 29725,  30064) |* 
 Info: [ 30064,  30403) | 
@@ -215,27 +134,5 @@ Info: [ 34810,  35149) |
 Info: [ 35149,  35488) |* 
 Info: [ 35488,  35827) |***** 
 Info: [ 35827,  36166) |* 
-=======
-Info: [ 22661,  23360) |** 
-Info: [ 23360,  24059) | 
-Info: [ 24059,  24758) |** 
-Info: [ 24758,  25457) |* 
-Info: [ 25457,  26156) |** 
-Info: [ 26156,  26855) | 
-Info: [ 26855,  27554) | 
-Info: [ 27554,  28253) | 
-Info: [ 28253,  28952) | 
-Info: [ 28952,  29651) | 
-Info: [ 29651,  30350) | 
-Info: [ 30350,  31049) | 
-Info: [ 31049,  31748) | 
-Info: [ 31748,  32447) | 
-Info: [ 32447,  33146) | 
-Info: [ 33146,  33845) | 
-Info: [ 33845,  34544) | 
-Info: [ 34544,  35243) | 
-Info: [ 35243,  35942) |*** 
-Info: [ 35942,  36641) |*** 
->>>>>>> 9681a4e245492a82ea32249ce77e2b6d99b5e8e9
 
 Info: Program finished normally.
