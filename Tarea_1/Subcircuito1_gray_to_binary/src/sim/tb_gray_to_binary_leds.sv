@@ -3,23 +3,24 @@
 
 module tb_gray_to_binary_leds;
 
-    // Testbench signals
-    logic [3:0] gray;    // Test input: Gray code
-    logic [3:0] binary;  // Test output: Binary code
+    // señales Testbench 
+    logic [3:0] gray;    // Test input: Gray coe
+    logic [3:0] binary;  // Test output: Binary 
 
-    // Instantiate the module under test (MUT)
+    // Inicializando el modulo
     gray_to_binary_leds dut (
         .gray(gray),
         .binary(binary)
     );
 
-    // Test stimulus
+    // iniciando simulaciones
     initial begin
-        // Display header
+        // Display con el nombre de la entrada y salida
         $display("Gray Code | Binary Code ");
         $display("----------|-------------");
 
-        // Test each Gray code and display the result
+        // se testean los valores de la tabla brindada en el enunciado
+        //así mismo se imprimen en pantalla para observar los resultados.
         gray = 4'b0000; #10;
         $display("%b   | %b", gray, binary);
         
@@ -68,7 +69,7 @@ module tb_gray_to_binary_leds;
         gray = 4'b1000; #10;
         $display("%b   | %b", gray, binary);
 
-        $finish;  // Stop the simulation
+        $finish;  //fin de la simulación
     end
 
     initial begin
