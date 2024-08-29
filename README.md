@@ -1,4 +1,4 @@
-# Nombre del proyecto
+# Decodificador de codigo de gray
 
 ## 1. Abreviaturas y definiciones
 - **FPGA**: Field Programmable Gate Arrays
