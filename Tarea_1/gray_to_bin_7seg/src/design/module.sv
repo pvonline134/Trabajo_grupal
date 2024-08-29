@@ -1,14 +1,11 @@
-module gray_to_binary_leds (
+module seg7_led_binay_to_gray (
     input  logic [3 : 0] gray,  // Entrada: Código Gray (4 bits)
     input  logic btn, // Entrada: Boton
-    //entradas para facilitar la escritura de las ecuaciones booleanas
-    output wire a,
-    output wire b,
-    output wire c,
-    output wire d,
-    output wire e,
+    //Salidas
+    output wire a, b, c, d, e, //variables internas
     output logic [3 : 0] binary, // Salida: Código Binario (N bits)
     output logic [3 : 0] leds, // Salida: leds
+    //transistores
     output logic uni,  // Salida : transistor unidades
     output logic dec, // Salida: transistor decenas
     //Salidas a segmentos del display
