@@ -197,7 +197,20 @@ endmodule
 
 ````
 #### 2. Parámetros
-
+`seg7_disp s7d (
+        .binary(binary),
+        .btn(btn),
+        .uni(uni),
+        .dec(dec),
+        .segA(segA),
+        .segB(segB),
+        .segC(segC),
+        .segD(segD),
+        .segE(segE),
+        .segF(segF),
+        .segG(segG)
+    );`
+Los parámetros se llaman igual que las variables usadas para evitar confusiones. La instancia del módulo se le dió el nombre de s7d.
 
 #### 3. Entradas y salidas
 Se utilizaron varios I/O para este subsistema, `input logic btn` es la entrada del botón implementado para mostrar las decenas o las unidades para cuando se apreta o no el boton, respectivamente. `output logic [3 : 0] binary` es son los bits en binario usados para saber el número a mostrar. `output wire a, b, c, d, e,` son variables internas, usadas para simplificar y acortar un poco las ecuaciones booleanas, basicamente se usan para poner una letra, en lugar de `binary[x]`. `output logic SegX` son las salidas que van a cada led de los 7 segmentos. Por último, `output logic uni` y `output logic dec` son las salidas que van a la base de los transistores, estos determinan si se enciende el display de las unidades o de las decenas, respectivamente.
