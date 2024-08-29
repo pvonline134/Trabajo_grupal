@@ -16,7 +16,9 @@
 module gray_to_binary_leds(
      input  logic [3 : 0] gray,  // Entrada: Código Gray (4 bits)      
      output logic [3 : 0] binary, // Salida: Código Binario (N bits)
-     output logic [3 : 0] leds, // Salida: leds
+     output logic [3 : 0] leds // Salida: leds
+    );
+
      // Lógica combinacional para la decodificació
     // gray_code a binary_code usando compuertas lógicas
 
@@ -31,7 +33,8 @@ module gray_to_binary_leds(
     assign leds[2] = ~binary[2];
     assign leds[1] = ~binary[1];
     assign leds[0] = ~binary[0];
-    );
+
+endmodule
 ```
 #### 2. Parámetros
 - Para el parámetro de entrada se utilizo `input  logic [3 : 0] gray` el cual representa la entrada en codigo gray.
