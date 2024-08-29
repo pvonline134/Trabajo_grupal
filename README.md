@@ -151,6 +151,57 @@ Dichos resultados se muestran a continuación:
 
 ![image](https://github.com/user-attachments/assets/9c14dbc7-889b-4a10-83db-755040e7ee91)
 
+### 3.3 Subsistema 3
+#### 1. Encendido de los 7 segmentos
+```SystemVerilog 
+Module seg7_disp (
+     //Entradas
+     input  logic btn, // Entrada: Boton
+    //Salidas
+     output logic [3 : 0] binary, // Salida: Código Binario (N bits)
+    //Variables intermedias
+    output wire a,
+    output wire b,
+    output wire c,
+    output wire d,
+    output wire e,
+    //segmentos
+    output logic segA,
+    output logic segB,
+    output logic segC,
+    output logic segD,
+    output logic segE,
+    output logic segF,
+    output logic segG,
+    //Transistores
+    output logic uni,  // Salida : transistor unidades
+    output logic dec // Salida: transistor decenas
+);
+     //Se les asigna un nuevo valor a, b, c, d a las variables para facilitar escritura de ecuaciones booleanas
+    assign a = binary[3];
+    assign b = binary[2];
+    assign c = binary[1];
+    assign d = binary[0];
+    assign e = btn; //boton de cambio de display
+
+    //Salida para controlar transistores
+    assign uni = btn;
+    assign dec = ~btn;
+
+//Ecuaciones booleanas de los 7 segmentos
+    assign segA = ~((~b & ~d & ~e) | (~a & c & ~e) | (b & d & ~e) | (a & ~c & ~e)); 
+    assign segB = ~((~b & ~e) | (~c & ~d & ~e) | (~a & c & d & ~e) | (a & c & e) | (a & b & ~c) | (a & ~d & ~e));
+    assign segC = ~((d & ~e) | (a & c) | (a & b & e) | (~b & ~c & ~e) | (~a & b & ~e));
+    assign segD = ~((~b & ~d & ~e) | (~a & ~b & c & ~e) | (b & ~c & d & ~e) | (~a & c & ~d & ~e) | (a & ~c & ~e) | (a & b & d & ~e));
+    assign segE = ~((~b & ~d & ~e) | (~a & c & ~d & ~e) | (a & ~c & ~d & ~e));
+    assign segF = ~((~a & b & ~c & ~e) | (a & ~b & ~c & ~e) | (a & b & c & ~e) | (~a & ~c & ~d & ~e) | (~a & b & ~d & ~e) | (a & ~b & ~d & ~e));
+    assign segG = ~((~a & ~b & c & ~e) | (b & ~c & ~e) | (a & ~c & ~e) | (a & b & ~e) | (~a & c & ~d & ~e));
+
+endmodule
+
+
+````
+
 
 ### Otros modulos
 - agregar informacion siguiendo el ejemplo anterior.
