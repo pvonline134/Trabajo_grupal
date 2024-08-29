@@ -10,7 +10,7 @@
 
 ### 3.0 Descripción general del sistema
 
-### 3.1 Módulo 1
+### 3.1 Subsistema 1
 #### 1. Gray to binary
 ```SystemVerilog
 module gray_to_binary_leds(
