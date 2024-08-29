@@ -34,7 +34,8 @@ gray_to_binary_leds(
     );
 ```
 #### 2. Parámetros
-- Lista de parámetros
+- Para el parámetro de entrada se utilizo `input  logic [3 : 0] gray` el cual representa la entrada en codigo gray.
+- Para los parámetros de salida se usó `output logic [3 : 0] binary` y `output logic [3 : 0] leds` ya que estos representan el código een binario y las luces de la FPGA
 
 #### 3. Entradas y salidas:
 - `input  logic [3 : 0] gray`: La entrada de este subsistema son los 4 bits en gray (vienen del dip switch)
