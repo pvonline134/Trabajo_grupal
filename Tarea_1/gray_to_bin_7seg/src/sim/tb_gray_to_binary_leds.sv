@@ -18,7 +18,7 @@ module tb_gray_to_binary_leds;
     logic segG;
 
     // Instantiate the module under test (MUT)
-    gray_to_binary_leds dut (
+     call mc (
         .gray(gray),
         .binary(binary),
         .btn(btn),
