@@ -38,7 +38,7 @@ gray_to_binary_leds(
 
 #### 3. Entradas y salidas:
 - `input  logic [3 : 0] gray`: La entrada de este subsistema son los 4 bits en gray (vienen del dip switch)
-- `output logic [3 : 0] binary`: Para la salida se tienen los 4 bits  en binario (La salida "leds" es simplemente la negación de la salida "binary", esto por fines de que la FPGA enciende los leds con 0)
+- `output logic [3 : 0] binary`: Para la salida se tienen los 4 bits  en binario (La salida "leds" es simplemente la negación de la salida "binary", esto debido a que la FPGA enciende los leds con 0)
 
 #### 4. Criterios de diseño
 Diagramas, texto explicativo...
