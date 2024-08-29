@@ -13,7 +13,7 @@
 ### 3.1 Módulo 1
 #### 1. Gray to binary
 ```SystemVerilog
-gray_to_binary_leds(
+module gray_to_binary_leds(
      input  logic [3 : 0] gray,  // Entrada: Código Gray (4 bits)      
      output logic [3 : 0] binary, // Salida: Código Binario (N bits)
      output logic [3 : 0] leds, // Salida: leds
@@ -62,7 +62,92 @@ Es decir, por 2 bits en gray de entrada se recibe un bit de salida en binario, s
 Como se puede observar se recibe una entrada en gray (en este caso 1010) y al pasarlo por el convertidor de gray a binario mencionado anteriormente, se obtiene el resultado en binario (1100) dicho resultado en binario se ve reflejado en los leds, donde un led rojo representa un 1 y un led apagado representa un 0.
 
 #### 5. Testbench
-Descripción y resultados de las pruebas hechas
+Una vez codificada la función que convierte de gray a binary se procedieron a hacer las pruebas en el Testbench y probar su funcionamiento. 
+```SystemVerilog
+module tb_gray_to_binary_leds;
+
+    // señales Testbench 
+    logic [3:0] gray;    // Test input: Gray coe
+    logic [3:0] binary;  // Test output: Binary 
+
+    // Inicializando el modulo
+    gray_to_binary_leds dut (
+        .gray(gray),
+        .binary(binary)
+    );
+
+    // iniciando simulaciones
+    initial begin
+        // Display con el nombre de la entrada y salida
+        $display("Gray Code | Binary Code ");
+        $display("----------|-------------");
+
+        // se testean los valores de la tabla brindada en el enunciado
+        //así mismo se imprimen en pantalla para observar los resultados.
+        gray = 4'b0000; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b0001; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b0011; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b0010; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b0110; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b0111; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b0101; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b0100; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b1100; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b1101; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b1111; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b1110; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b1010; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b1011; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b1001; #10;
+        $display("%b   | %b", gray, binary);
+        
+        gray = 4'b1000; #10;
+        $display("%b   | %b", gray, binary);
+
+        $finish;  //fin de la simulación
+    end
+
+    initial begin
+        $dumpfile("tb_gray_to_binary_leds.vcd");
+        $dumpvars(0,tb_gray_to_binary_leds);
+    end
+
+endmodule
+```
+En este Testbench basicamente se declaran las entradas y salidas y se procede a probar cada posible caso (para 4 bits) y se realiza un display por cada caso con el fin de observar la entrada y la salida y así comparar los resultados con la tabla brindada.
+
+Dichos resultados se muestran a continuación:
+
+![image](https://github.com/user-attachments/assets/9c14dbc7-889b-4a10-83db-755040e7ee91)
+
 
 ### Otros modulos
 - agregar informacion siguiendo el ejemplo anterior.
