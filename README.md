@@ -160,11 +160,7 @@ Module seg7_disp (
     //Salidas
      output logic [3 : 0] binary, // Salida: Código Binario (N bits)
     //Variables intermedias
-    output wire a,
-    output wire b,
-    output wire c,
-    output wire d,
-    output wire e,
+    output wire a, b, c, d, e,
     //segmentos
     output logic segA,
     output logic segB,
@@ -199,9 +195,9 @@ Module seg7_disp (
 
 endmodule
 
-
 ````
-
+#### 2. Parámetros
+Se utilizaron varios I/O para este subsistema, `input logic btn` es la entrada del botón implementado para mostrar las decenas o las unidades para cuando se apreta o no el boton, respectivamente. `output logic [3 : 0] binary` es son los bits en binario usados para saber el número a mostrar. `output wire a, b, c, d, e,` son variables internas, usadas para simplificar y acortar un poco las ecuaciones booleanas, basicamente se usan para poner una letra, en lugar de `binary[x]`. `output logic SegX` son las salidas que van a cada led de los 7 segmentos. Por último, `output logic uni` y `output logic dec` son las salidas que van a la base de los transistores, estos determinan si se enciende el display de las unidades o de las decenas, respectivamente.
 
 ### Otros modulos
 - agregar informacion siguiendo el ejemplo anterior.
