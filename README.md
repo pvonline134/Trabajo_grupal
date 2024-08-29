@@ -1,0 +1,1 @@
+Grat to binary
