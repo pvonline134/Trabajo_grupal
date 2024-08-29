@@ -56,6 +56,12 @@ Para 2 bits dicha suma tiene un comportamiento de XOR ya que se tiene:
 
 1+1=0
 
+Es decir, por 2 bits en gray de entrada se recibe un bit de salida en binario, sin embargo se ocupan 4 salidas en binario.
+Como se dijo anteriormente a la salida en binario se le suma de manera binaria el siguiente bit en gray (partiendo desde el
+MSB hacia la derecha) es por eso que simplemente para lograr tener los 4 bits en binario de salida se colocan XORs con una 
+patilla saliendo del resultado del XOR anterior y la otra con el bit en gray adyacente. Cabe destacar que como el MSB se 
+mantiene en ambos códigos (Gray y Binario) la entrada en gray del MSB es igual a la salida del MSB del binario. a continuación
+se ejemplifica en el siguiente diagrama:
 
 
 #### 5. Testbench
