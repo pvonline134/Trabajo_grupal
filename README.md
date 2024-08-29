@@ -11,11 +11,26 @@
 ### 3.0 Descripción general del sistema
 
 ### 3.1 Módulo 1
-#### 1. Encabezado del módulo
+#### 1. Gray to binary
 ```SystemVerilog
-module mi_modulo(
-    input logic     entrada_i,      
-    output logic    salida_i 
+gray_to_binary_leds(
+     input  logic [3 : 0] gray,  // Entrada: Código Gray (4 bits)      
+     output logic [3 : 0] binary, // Salida: Código Binario (N bits)
+     output logic [3 : 0] leds, // Salida: leds
+     // Lógica combinacional para la decodificació
+    // gray_code a binary_code usando compuertas lógicas
+
+    assign binary[3] = gray [3];
+    assign binary[2] = gray [3] ^ gray [2];
+    assign binary[1] = binary [2] ^ gray [1];
+    assign binary[0] = binary [1] ^ gray [0];
+
+    //asignacion de leds de acuerdo al bit
+
+    assign leds[3] = ~binary[3];
+    assign leds[2] = ~binary[2];
+    assign leds[1] = ~binary[1];
+    assign leds[0] = ~binary[0];
     );
 ```
 #### 2. Parámetros
