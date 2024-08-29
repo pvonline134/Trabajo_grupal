@@ -197,15 +197,20 @@ endmodule
 
 ````
 #### 2. Parámetros
-Se utilizaron varios I/O para este subsistema, `input logic btn` es la entrada del botón implementado para mostrar las decenas o las unidades para cuando se apreta o no el boton, respectivamente. `output logic [3 : 0] binary` es son los bits en binario usados para saber el número a mostrar. `output wire a, b, c, d, e,` son variables internas, usadas para simplificar y acortar un poco las ecuaciones booleanas, basicamente se usan para poner una letra, en lugar de `binary[x]`. `output logic SegX` son las salidas que van a cada led de los 7 segmentos. Por último, `output logic uni` y `output logic dec` son las salidas que van a la base de los transistores, estos determinan si se enciende el display de las unidades o de las decenas, respectivamente.
 
+
+#### 3. Entradas y salidas
+Se utilizaron varios I/O para este subsistema, `input logic btn` es la entrada del botón implementado para mostrar las decenas o las unidades para cuando se apreta o no el boton, respectivamente. `output logic [3 : 0] binary` es son los bits en binario usados para saber el número a mostrar. `output wire a, b, c, d, e,` son variables internas, usadas para simplificar y acortar un poco las ecuaciones booleanas, basicamente se usan para poner una letra, en lugar de `binary[x]`. `output logic SegX` son las salidas que van a cada led de los 7 segmentos. Por último, `output logic uni` y `output logic dec` son las salidas que van a la base de los transistores, estos determinan si se enciende el display de las unidades o de las decenas, respectivamente.
 ### Otros modulos
+
 - agregar informacion siguiendo el ejemplo anterior.
 
 
 ## 4. Consumo de recursos
 
 ## 5. Problemas encontrados durante el proyecto
+Se puede hablar de varios problemas que se encontraron, la mayoría no demasiado exigentes, pero más que problemas fueron retos que pusieron a prueba la genialidad del grupo de trabajo. El principal reto que se presentó fue transformar la entada binaria en señales capaces de encender o apagar los segmentos del display, también la implementación del botón sin hacer uso de funciones como `case` o `if`, probó ser dificultoso. Al final se logró usando unicamente ecuaciones booleanas, pero presentó la necesiadad de usar tablas de verdad con 5 bits de entrada, y esto a su vez 16 veces, una para cada número a mostar, lo que hace más compleja la resolución y simplificación de las ecuaciones obtenidas. Por otro lado, en cuanto a las salidas de la tabla de verdad, tener 7 posibles estados para cada combinación hizo más tedioso el proceso, debido a la gran cantidad de información que se debía tomar en cuenta. 
+
 
 ## Apendices:
 ### Apendice 1:
