@@ -47,11 +47,11 @@ este algoritmo consiste en mantener el MSB y a cada bit del código binario gene
 adyacente del código gray y el acarreo se descarta.
 
 Para 2 bits dicha suma tiene un comportamiento de XOR ya que se tiene:
-0+0=0;
-0+1=1;
-1+0=1;
-1+1=0;
 
+0+0=0
+0+1=1
+1+0=1
+1+1=0
 
 #### 5. Testbench
 Descripción y resultados de las pruebas hechas
