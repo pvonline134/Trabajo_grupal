@@ -245,10 +245,22 @@ Se utilizaron varios I/O para este subsistema, `input logic btn` es la entrada d
 
 #### 4. Criterios de diseño
 Para el diseño de este subsistema se usaron diferentes entradas las cuales fueron necesarias para obtener las ecuaciones necesarias para cada segmento de los 7 segmentos. Las entradas y salidas ya fueron analizadas en el punto 3 de este subsistema, por lo que se procederá a explicar el uso que se le dió en el desarrollo del código necesario.
-Para apegarse a las especificaciones del proyecto, se usaron estrictamente tablas de verdad y con estas, se encontraron las ecuaciones booleanas necesarias. No se usaron funciones if o case por esta misma razón. A continuación se muestra la tabla de verdad utilizada en este caso. 
-![image](https://github.com/user-attachments/assets/414952f2-0a08-4d27-a04b-281b420a62b4)
+Para apegarse a las especificaciones del proyecto, se usaron estrictamente tablas de verdad y con estas, se encontraron las ecuaciones booleanas necesarias. No se usaron funciones if o case por esta misma razón. A continuación se muestra la tabla de verdad utilizada en este caso:
+
+![Tabla_de_verdad](https://github.com/user-attachments/assets/3eeb7818-b3d7-4b92-b9c5-04b2d347b5ab)
+
+Nótese que de los número del 0 a 9 los segmentos que aparecen encendidos en la salida corresponden a los que aparecerían en cualquier siete segmentos para representar estos números, vease que el bit "e" se encuentra en cero, esta variable corresponde al botón con el que se selecciona que "display" se enciende, al estar en cero indica que se muestran las unidades. Del 10 a 15 existen dos posibilidades a mostrar, las unidades o las decenas, cuando "e" es 0 se muestran las unidades por lo que la salida es la misma que con los números del 0 a 5. Al apretar el botón se muestran las decenas, para este caso solo se tiene que mostrar un "1" en el otro siete segmentos. Mediante esta variable "e" se consigue obtener dos estados distintos para un mismo número. Si se llega a apretar el botón en un número que solo tiene unidades, al no estar definido este caso, la salida no enciende los siete segmentos y no aparece nada en el "display" de las decenas.
+
+A partir de la tabla de verdad se obtuvieron los minterminos necesarios para simplificar las ecuaciones, se usó el método de los mapas de karnaugh de 5 variables para simplificar las ecuaciones. Los mapas que llevaron a las ecuaciones booleanas se muestran a continuación:
+
+Segmento C:
 ![image](https://github.com/user-attachments/assets/627eb57e-f0d6-4287-be4a-ca17d0a3cfc4)
+Segmento D:
 ![image](https://github.com/user-attachments/assets/d8845df7-28dd-462b-8491-6c1f302d4af3)
+Segmento E:
+![image](https://github.com/user-attachments/assets/414952f2-0a08-4d27-a04b-281b420a62b4)
+
+Al final estas ecuaciones se niegan, esto porque se usaron siete segmentos del tipo ánodo común, por lo que se necesita ofrecer un camino a tierra para que estos se enciendan, esto se consigue poniendo un "0" en el cátodo de cada segmento.
 
 
 ## 4. Consumo de recursos
