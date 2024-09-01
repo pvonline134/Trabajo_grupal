@@ -13,7 +13,7 @@
 ### 3.1 Subsistema 1
 #### 1. Gray to binary
 ```SystemVerilog
-module gray_to_binary_leds(
+module gray_to_binary(
      input  logic [3 : 0] gray,  // Entrada: Código Gray (4 bits)      
      output logic [3 : 0] binary, // Salida: Código Binario (N bits)
      output logic [3 : 0] leds // Salida: leds
@@ -26,13 +26,6 @@ module gray_to_binary_leds(
     assign binary[2] = gray [3] ^ gray [2];
     assign binary[1] = binary [2] ^ gray [1];
     assign binary[0] = binary [1] ^ gray [0];
-
-    //asignacion de leds de acuerdo al bit
-
-    assign leds[3] = ~binary[3];
-    assign leds[2] = ~binary[2];
-    assign leds[1] = ~binary[1];
-    assign leds[0] = ~binary[0];
 
 endmodule
 ```
@@ -151,9 +144,28 @@ Dichos resultados se muestran a continuación:
 
 ![image](https://github.com/user-attachments/assets/9c14dbc7-889b-4a10-83db-755040e7ee91)
 
+### 3.2 Subsistema 2
+#### 1. Encendido de los leds de la FPGA
+````
+module control_led (
+    input  logic [3 : 0] binary, // Entrada: Código Binario (4 bits)
+    output logic [3 : 0] leds  // Salida: LEDs
+    
+);
+    assign leds[3] = ~binary[3];
+    assign leds[2] = ~binary[2];
+    assign leds[1] = ~binary[1];
+    assign leds[0] = ~binary[0];
+
+endmodule 
+````
+#### 2. Parámetros
+
+
 ### 3.3 Subsistema 3
 #### 1. Encendido de los 7 segmentos
-```SystemVerilog 
+```
+SystemVerilog 
 Module seg7_disp (
      //Entradas
      input  logic btn, // Entrada: Boton
