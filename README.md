@@ -1,4 +1,4 @@
-# Decodificador de codigo de gray
+# Tarea I: Introducción a diseño digital en HDL
 
 ## 1. Abreviaturas y definiciones
 - **FPGA**: Field Programmable Gate Arrays
