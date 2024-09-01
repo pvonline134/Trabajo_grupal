@@ -241,6 +241,10 @@ Los parámetros se llaman igual que las variables usadas para evitar confusiones
 #### 3. Entradas y salidas
 Se utilizaron varios I/O para este subsistema, `input logic btn` es la entrada del botón implementado para mostrar las decenas o las unidades para cuando se apreta o no el boton, respectivamente. `output logic [3 : 0] binary` es son los bits en binario usados para saber el número a mostrar. `output wire a, b, c, d, e,` son variables internas, usadas para simplificar y acortar un poco las ecuaciones booleanas, basicamente se usan para poner una letra, en lugar de `binary[x]`. `output logic SegX` son las salidas que van a cada led de los 7 segmentos. Por último, `output logic uni` y `output logic dec` son las salidas que van a la base de los transistores, estos determinan si se enciende el display de las unidades o de las decenas, respectivamente.
 
+#### 4. Criterios de diseño
+Para el diseño de este subsistema se usaron diferentes entradas las cuales fueron necesarias para obtener las ecuaciones necesarias para cada segmento de los 7 segmentos. Las entradas y salidas ya fueron analizadas en el punto 3 de este subsistema, por lo que se procederá a explicar el uso que se le dió en el desarrollo del código necesario.
+Para apegarse a las especificaciones del proyecto, se usaron estrictamente tablas de verdad y con estas, se encontraron las ecuaciones booleanas necesarias. No se usaron funciones if o case por esta misma razón. A continuación se muestra la tabla de verdad utilizada en este caso. 
+
 ## 4. Consumo de recursos
 En consumo de recursos de la FPGA se encuentra en el archivo generado por el "make pnr". Se están usando 21 de 8640 "Look up tables" (LUT) de 4 bits (LUT4) y 6 de 4320 LUT5. Estos son las tablas de verdad, las cuales se llenan al cargar la información a la FPGA. Se implementan 22 de 274 "Input output block" (IOB). Estas son la interfaz entre la FPGA y las salidas y entradas físicas.
 
