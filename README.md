@@ -160,7 +160,21 @@ module control_led (
 endmodule 
 ````
 #### 2. Parámetros
+`    control_led cl (
+        .binary(binary),
+        .leds(leds)
+    );
+    `
+Estos fueron los parámteros utilizados para llamar al módulo, se usó el nombre de instancia "cl".
 
+#### 3. Entradas y salidas
+Se observa que en la definición del módulo solo se declaran una entrada y una salida. `input logic [3:0] binary` viene del subsistema 1. Este son los valores de cada bits de la conversión gray a binario. `output logic [3:0] leds` es la salida que va a los leds de la FPGA. Estos son la negación del bit de entrada, esto debido a que los leds se encienden cuando estos son conectados a tierra.
+
+#### 4. Criterios de diseño
+En cuanto al diseño de este subsistema, solo se observo el "pinout" de la FPGA TangNano 9k y se observó que los leds ya están conectados a la alimentación de la placa, se determinó que debían se conectados a tierra para que estos funcionaran. En cuanto al diseño como un circuito, este consistiría en conectar al cátodo de cada led un inversor CMOS y los ánodos a una tensión común. Si no se hiciera de este modo, los leds se encenderían cuando el bit es "0" y se apagarían cuando el bit es "1".
+
+#### 5. Testbench
+El testbench de este circuito es el mismo del subsistema 1. Dado que este solo consiste en un inversor CMOS a nivel circuito, se toman los valores de los bits en binarios que aparecen en el testbench y cuando un bit es "0" el led debe estar apagado y cuando es "1" el led encendido. 
 
 ### 3.3 Subsistema 3
 #### 1. Encendido de los 7 segmentos
@@ -226,10 +240,6 @@ Los parámetros se llaman igual que las variables usadas para evitar confusiones
 
 #### 3. Entradas y salidas
 Se utilizaron varios I/O para este subsistema, `input logic btn` es la entrada del botón implementado para mostrar las decenas o las unidades para cuando se apreta o no el boton, respectivamente. `output logic [3 : 0] binary` es son los bits en binario usados para saber el número a mostrar. `output wire a, b, c, d, e,` son variables internas, usadas para simplificar y acortar un poco las ecuaciones booleanas, basicamente se usan para poner una letra, en lugar de `binary[x]`. `output logic SegX` son las salidas que van a cada led de los 7 segmentos. Por último, `output logic uni` y `output logic dec` son las salidas que van a la base de los transistores, estos determinan si se enciende el display de las unidades o de las decenas, respectivamente.
-### Otros modulos
-
-- agregar informacion siguiendo el ejemplo anterior.
-
 
 ## 4. Consumo de recursos
 
