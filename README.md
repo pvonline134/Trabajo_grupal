@@ -246,6 +246,10 @@ Se utilizaron varios I/O para este subsistema, `input logic btn` es la entrada d
 #### 4. Criterios de diseño
 Para el diseño de este subsistema se usaron diferentes entradas las cuales fueron necesarias para obtener las ecuaciones necesarias para cada segmento de los 7 segmentos. Las entradas y salidas ya fueron analizadas en el punto 3 de este subsistema, por lo que se procederá a explicar el uso que se le dió en el desarrollo del código necesario.
 Para apegarse a las especificaciones del proyecto, se usaron estrictamente tablas de verdad y con estas, se encontraron las ecuaciones booleanas necesarias. No se usaron funciones if o case por esta misma razón. A continuación se muestra la tabla de verdad utilizada en este caso. 
+![image](https://github.com/user-attachments/assets/414952f2-0a08-4d27-a04b-281b420a62b4)
+![image](https://github.com/user-attachments/assets/627eb57e-f0d6-4287-be4a-ca17d0a3cfc4)
+![image](https://github.com/user-attachments/assets/d8845df7-28dd-462b-8491-6c1f302d4af3)
+
 
 ## 4. Consumo de recursos
 En consumo de recursos de la FPGA se encuentra en el archivo generado por el "make pnr". Se están usando 21 de 8640 "Look up tables" (LUT) de 4 bits (LUT4) y 6 de 4320 LUT5. Estos son las tablas de verdad, las cuales se llenan al cargar la información a la FPGA. Se implementan 22 de 274 "Input output block" (IOB). Estas son la interfaz entre la FPGA y las salidas y entradas físicas.
