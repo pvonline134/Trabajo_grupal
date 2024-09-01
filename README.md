@@ -2,6 +2,8 @@
 
 ## 1. Abreviaturas y definiciones
 - **FPGA**: Field Programmable Gate Arrays
+- **LUT4**: "look up table" de 4 bits de entrada
+- **LUT5**: "look up table" de 5 bits de entrada
 
 ## 2. Referencias
 [0] David Harris y Sarah Harris. *Digital Design and Computer Architecture. RISC-V Edition.* Morgan Kaufmann, 2022. ISBN: 978-0-12-820064-3
