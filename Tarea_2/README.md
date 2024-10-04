@@ -148,7 +148,7 @@ module tb_calculadora_sumadora;
         #10;
         reset = 0;
         
-        // Paso 1: num1 = 5
+        // Paso 1: num1 = 555
         digito = 4'd5;
         #10;
         digito = 4'd5;
@@ -161,10 +161,7 @@ module tb_calculadora_sumadora;
         #10;
         c = 0;
         
-        // Paso 2: num1 = 6
-
-
-        // Paso 3: Añadir otro dígito a num1 -> num1 = 67
+       
 
 
         digito = 0001;
@@ -184,14 +181,14 @@ module tb_calculadora_sumadora;
         digito = 4'd9;
         #10;
 
-        // Paso 5: Añadir otro dígito a num2 -> num2 = 85
+      
         digito = 4'd0;
         #10;
         c = 1;
         #10;
         c = 0;
 
-        // Paso 6: Añadir un tercer dígito a num2 -> num2 = 859
+        
         digito = 4'd9;
         #10;
         digito = 4'd9;
