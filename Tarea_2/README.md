@@ -17,7 +17,7 @@ module calculadora_sumadora (
     input logic [3:0] digito,      // Entrada del dígito (0-9)
     input logic clk,               // Reloj
     input logic reset,             // Reset global
-    input logic c,                 // Señal para resetear el número actual
+    input logic clear_disp,                 // Señal para resetear el número actual
     input logic p,                 // Señal para cambiar entre num1 y num2
     input logic e,                 // Señal para ejecutar la suma
     output logic [11:0] numero1,   // Número 1 (máximo 3 dígitos: centenas, decenas, unidades)
@@ -38,7 +38,7 @@ module calculadora_sumadora (
             resultado <= 12'd0;
         end
         else begin
-            if (c) begin
+            if (clear_disp) begin
                 if (estado == 2'b00) begin
                     num1_reg <= 12'd0; // Resetea num1
                 end
@@ -77,13 +77,28 @@ module calculadora_sumadora (
 endmodule
 ```
 #### 2. Parámetros
-- Lista de parámetros
+Los parámetros se instanciaron de la siguiente manera:
+```SystemVerilog
+   calculadora_sumadora calcsum(
+        .clk(clk),
+        .reset(reset),
+        .clear_disp(clear_disp),
+        .p(p),
+        .e(btnsuma),
+        .numero1(int_numero1),
+        .numero2(int_numero2),
+        .resultado(int_resultado),
+        .estado(int_estado),
+        .digito(digito),
+        
+    );
+```
 
 #### 3. Entradas y salidas:
 - `input logic [3:0] digito,`: Este input de digito representa el digito de 4 bits proveniente del dipswitch.
 - `input logic clk,`: Este input representa el reloj utilizado en el código.
 - `input logic reset,`: Este input representa el reset general del código y de la maquina de estados.
-- `input logic c,`: Este input representa el botón de borrado (clear) del número.
+- `input logic clear_disp,`: Este input representa el botón de borrado (clear) del número.
 - `input logic p,`: Este input es el responsable del cambio de estado (pasa a trabajar ahora con los números del dígito 2).
 - `input logic e,`: Este input es el que se encarga de realizar la suma final.
 - `output logic [11:0] numero1,`: Esta salida representa al primer número en la suma.
@@ -110,7 +125,7 @@ module tb_calculadora_sumadora;
     reg [3:0] digito;
     reg clk;
     reg reset;
-    reg c;
+    reg clear_disp;
     reg p;
     reg e;
 
@@ -156,10 +171,10 @@ module tb_calculadora_sumadora;
         digito = 4'd5;
         #10;
         
-        // Presionar 'c' para resetear num1
-        c = 1;
+        // Presionar 'clear_disp' para resetear num1
+        clear_disp = 1;
         #10;
-        c = 0;
+        clear_disp = 0;
         
        
 
@@ -184,9 +199,9 @@ module tb_calculadora_sumadora;
       
         digito = 4'd0;
         #10;
-        c = 1;
+        clear_disp = 1;
         #10;
-        c = 0;
+        clear_disp = 0;
 
         
         digito = 4'd9;
@@ -223,7 +238,7 @@ module tb_calculadora_sumadora;
 endmodule
 ```
 
-Este testbench prueba el funcionamiento del modulo anterior en diferentes casos, primero se resetea todo para iniciar en ceros, luego en el numero 1 se prueba con el número 555 (en el testbench como se van viendo los dígitos inserción tras inserción), luego se presiona el botón de borrado y se borra el numero, luego se procede con la inserción dígito tras dígito del numero 199, posteriormente, se cambia de estado presionando el botón p, el cual hace que ahora se esté trabajando con el numero 2, para este numero se le insertan los dígitos 9 y 0, formando así el 90 posteriormente se borra el numero con el botón c y luego se insertan los dígitos para formar el número 999, finalmente se efectúa la suma.
+Este testbench prueba el funcionamiento del modulo anterior en diferentes casos, primero se resetea todo para iniciar en ceros, luego en el numero 1 se prueba con el número 555 (en el testbench como se van viendo los dígitos inserción tras inserción), luego se presiona el botón de borrado y se borra el numero, luego se procede con la inserción dígito tras dígito del numero 199, posteriormente, se cambia de estado presionando el botón p, el cual hace que ahora se esté trabajando con el numero 2, para este numero se le insertan los dígitos 9 y 0, formando así el 90 posteriormente se borra el numero con el botón de borrado y luego se insertan los dígitos para formar el número 999, finalmente se efectúa la suma.
 
 Los resultados del testbench se muestran a continuación:
 ![image](https://github.com/user-attachments/assets/6ed71e5b-ba2c-4525-baa0-df73260a13c7)
@@ -231,7 +246,7 @@ Los resultados del testbench se muestran a continuación:
 #### 6. Binario a BCD
 ```SystemVerilog
 module bin_to_bcd_12bit (
-    output logic [11:0] bin,    // Número binario de 12 bits (rango 0-4095)
+    input logic [11:0] bin,    // Número binario de 12 bits (rango 0-4095)
     output logic [15:0] bcd    // Número BCD de 16 bits (cuatro dígitos BCD: miles, centenas, decenas, unidades)
 );  
     // Variables internas
@@ -270,8 +285,13 @@ module bin_to_bcd_12bit (
 endmodule
 ```
 #### 6. Parámetros
-- Lista de parámetros
-
+Instanciación del módulo de binario a BCD:
+``` SystemVerilog
+    bin_to_bcd_12bit bin2bcd (
+        .bin(binario),
+        .bcd(int_bcd)
+    );
+```
 #### 7. Entradas y salidas:
 - `input logic [11:0] bin,` : la señal de entrada del sistema es un numero en binario (o decimal).
 - `output logic [15:0] bcd,` : la señal de salida del sistema muestra a la entrada en formato bcd.
