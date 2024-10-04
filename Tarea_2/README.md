@@ -91,7 +91,15 @@ endmodule
 - `output logic [11:0] resultado,`: Esta salida representa el resultado de la suma.
 
 #### 4. Criterios de diseño
-Diagramas, texto explicativo...
+Los criterios de diseño se basan principalmente en el siguiente diagrama que representa las máquinas de estados de este módulo.
+![image](https://github.com/user-attachments/assets/d04c32dd-a04a-4ed8-95b7-c1bd9bae3ea4)
+![image](https://github.com/user-attachments/assets/213193fe-1b73-489e-9ee3-737eac4236c3)
+La primera imagen parte de un estado M el cual al recibir un numero o un digito (N), el cual pasa al siguiente estado (A), este estado representa el primer número el cual será utilizado en la suma, al recibir N esta quedará guardada en las unidades de este número, posteriormente se regresa al estado M y se repetirá el proceso hasta máximo llegar a los tres dígitos, habrán desplazamientos es decir lo que está en las unidades pasará a las decenas y luego a las centenas es por eso que la salida de este módulo tiene tres posibles salidas un número con sólo unidades un número con decenas y unidades y un número con centenas decenas y unidades.
+Si se llegase a recibir la señal de borrado (PC) se borrará todo lo que este dentro del primer número, llenandolo de ceros.
+Si se preciona el botón de p (en la maquina de estados es *) se comenzará atrabajat con el segundo numero de la operación y se repetirá el proceso anterior solo que ahora en el número 2.
+
+La imagen 2 muestra la otra maquina de estados, esta se encarga de realizar la suma, al precionar el botón de e (en la maquina de estados se representa con #), el estado C representa el resultado de la suma, ya que su salida es la suma de los numeros.
+
 
 #### 5. Testbench
 Descripción y resultados de las pruebas hechas
