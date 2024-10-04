@@ -10,13 +10,71 @@
 
 ### 3.0 Descripción general del sistema
 
-### 3.1 Módulo 1
+### 3.1 Subsistema 2
 #### 1. Encabezado del módulo
 ```SystemVerilog
-module mi_modulo(
-    input logic     entrada_i,      
-    output logic    salida_i 
-    );
+module calculadora_sumadora (
+    input logic [3:0] digito,      // Entrada del dígito (0-9)
+    input logic clk,               // Reloj
+    input logic reset,             // Reset global
+    input logic c,                 // Señal para resetear el número actual
+    input logic p,                 // Señal para cambiar entre num1 y num2
+    input logic e,                 // Señal para ejecutar la suma
+    output logic [11:0] numero1,   // Número 1 (máximo 3 dígitos: centenas, decenas, unidades)
+    output logic [11:0] numero2,   // Número 2 (máximo 3 dígitos: centenas, decenas, unidades)
+    output logic [11:0] resultado  // Resultado de la suma
+);
+
+    logic [1:0] estado;            // Estado para determinar si se está ingresando num1 o num2
+    logic [11:0] num1_reg, num2_reg; // Registros internos para num1 y num2
+
+    // Inicialización
+    always_ff @(posedge clk or posedge reset) begin
+
+        if (reset) begin
+            num1_reg <= 12'd0;
+            num2_reg <= 12'd0;
+            estado <= 2'b00; // Empezamos ingresando en num1
+            resultado <= 12'd0;
+        end
+        else begin
+            if (c) begin
+                if (estado == 2'b00) begin
+                    num1_reg <= 12'd0; // Resetea num1
+                end
+                else begin
+                    num2_reg <= 12'd0; // Resetea num2
+                end
+            end
+            else if (p) begin
+                estado <= ~estado; // Cambia entre num1 y num2
+            end
+            else if (e) begin
+                resultado <= num1_reg + num2_reg; // Suma los dos números
+            end
+            else begin
+                // Insertar el dígito
+                if (estado == 2'b00) begin
+                    // Desplazamiento de número 1
+                    if (num1_reg < 999) begin
+                        num1_reg <= (num1_reg * 10) + digito;
+                    end
+                end
+                else begin
+                    // Desplazamiento de número 2
+                    if (num2_reg < 999) begin
+                        num2_reg <= (num2_reg * 10) + digito;
+                    end
+                end
+            end
+        end
+    end
+
+    // Asignar valores de salida
+    assign numero1 = num1_reg;
+    assign numero2 = num2_reg;
+
+endmodule
 ```
 #### 2. Parámetros
 - Lista de parámetros
