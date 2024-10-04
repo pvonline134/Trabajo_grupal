@@ -80,8 +80,15 @@ endmodule
 - Lista de parámetros
 
 #### 3. Entradas y salidas:
-- `entrada_i`: descripción de la entrada
-- `salida_o`: descripción de la salida
+- `input logic [3:0] digito,`: Este input de digito representa el digito de 4 bits proveniente del dipswitch.
+- `input logic clk,`: Este input representa el reloj utilizado en el código.
+- `input logic reset,`: Este input representa el reset general del código y de la maquina de estados.
+- `input logic c,`: Este input representa el botón de borrado (clear) del número.
+- `input logic p,`: Este input es el responsable del cambio de estado (pasa a trabajar ahora con los números del dígito 2).
+- `input logic e,`: Este input es el que se encarga de realizar la suma final.
+- `output logic [11:0] numero1,`: Esta salida representa al primer número en la suma.
+- `output logic [11:0] numero2,`: Esta salida representa al segundo número en la suma.
+- `output logic [11:0] resultado,`: Esta salida representa el resultado de la suma.
 
 #### 4. Criterios de diseño
 Diagramas, texto explicativo...
