@@ -102,8 +102,129 @@ La imagen 2 muestra la otra maquina de estados, esta se encarga de realizar la s
 
 
 #### 5. Testbench
-Descripción y resultados de las pruebas hechas
+```SystemVerilog
+`timescale 1ns/1ps
+module tb_calculadora_sumadora;
 
+    // Entradas
+    reg [3:0] digito;
+    reg clk;
+    reg reset;
+    reg c;
+    reg p;
+    reg e;
+
+    // Salidas
+    wire [11:0] numero1;
+    wire [11:0] numero2;
+    wire [11:0] resultado;
+
+    // Instanciar la calculadora sumadora
+    calculadora_sumadora uut (
+        .digito(digito),
+        .clk(clk),
+        .reset(reset),
+        .c(c),
+        .p(p),
+        .e(e),
+        .numero1(numero1),
+        .numero2(numero2),
+        .resultado(resultado)
+    );
+
+    // Generar el reloj
+    always #5 clk = ~clk;
+
+    initial begin
+        // Inicialización
+        clk = 0;
+        reset = 1;
+        c = 0;
+        p = 0;
+        e = 0;
+        digito = 0;
+        
+        // Esperar un ciclo de reloj
+        #10;
+        reset = 0;
+        
+        // Paso 1: num1 = 5
+        digito = 4'd5;
+        #10;
+        digito = 4'd5;
+        #10;
+        digito = 4'd5;
+        #10;
+        
+        // Presionar 'c' para resetear num1
+        c = 1;
+        #10;
+        c = 0;
+        
+        // Paso 2: num1 = 6
+
+
+        // Paso 3: Añadir otro dígito a num1 -> num1 = 67
+
+
+        digito = 0001;
+
+        #10;
+        digito = 4'd9;
+        #10;
+        digito = 4'd9;
+        #10;
+
+        // Presionar 'p' para cambiar a num2
+        p = 1;
+        #10;
+        p = 0;
+
+        // Paso 4: num2 = 8
+        digito = 4'd9;
+        #10;
+
+        // Paso 5: Añadir otro dígito a num2 -> num2 = 85
+        digito = 4'd0;
+        #10;
+        c = 1;
+        #10;
+        c = 0;
+
+        // Paso 6: Añadir un tercer dígito a num2 -> num2 = 859
+        digito = 4'd9;
+        #10;
+        digito = 4'd9;
+        #10;
+        digito = 4'd9;
+        #10;
+
+        // Presionar 'e' para sumar num1 y num2
+        e = 1;
+        #10;
+        e = 0;
+
+        // Finalizar la simulación
+       
+        $finish;
+    end
+
+    // Monitorizar cambios en las señales para verificar resultados
+    initial begin
+        $monitor("numero1=%0d, numero2=%0d, resultado=%0d", numero1, numero2, resultado);
+    end
+
+
+
+
+
+
+        initial begin
+        $dumpfile ("tb_calculadora_sumadora.vcd");
+        $dumpvars (0, tb_calculadora_sumadora);
+    end
+endmodule
+```
 ### Otros modulos
 - agregar informacion siguiendo el ejemplo anterior.
 
