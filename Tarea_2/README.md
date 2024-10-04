@@ -11,7 +11,7 @@
 ### 3.0 Descripción general del sistema
 
 ### 3.1 Subsistema 2
-#### 1. Encabezado del módulo
+#### 1. Calculadora sumadora
 ```SystemVerilog
 module calculadora_sumadora (
     input logic [3:0] digito,      // Entrada del dígito (0-9)
