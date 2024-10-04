@@ -225,6 +225,8 @@ module tb_calculadora_sumadora;
     end
 endmodule
 ```
+
+Este testbench prueba el funcionamiento del modulo anterior en diferentes casos, primero se resetea todo para iniciar en ceros, luego en el numero 1 se prueba con el número 555 (en el testbench como se van viendo los dígitos inserción tras inserción), luego se presiona el botón de borrado y se borra el numero, luego se procede con la inserción dígito tras dígito del numero 199, posteriormente, se cambia de estado presionando el botón p, el cual hace que ahora se esté trabajando con el numero 2, para este numero se le insertan los dígitos 9 y 0, formando así el 90 posteriormente se borra el numero con el botón c y luego se insertan los dígitos para formar el número 999, finalmente se efectúa la suma.
 ### Otros modulos
 - agregar informacion siguiendo el ejemplo anterior.
 
