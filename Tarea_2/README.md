@@ -586,6 +586,155 @@ Para realizar pruebas sobre el módulo diseñado se hizo input de distintas fila
 
 Esta fue la última prueba realizada previo al cambio de intrucciones para trabajar con el dip switch, en esta última version no se estaba realizando un correcto shift de las columnas.
 
+### 15. Decodificador de DipSwitch
+
+```SystemVerilog
+module dipswitch_decoder (
+    input logic [3:0] dipswitch, // Entrada de 4 bits del dipswitch
+    input logic button,          // Entrada del botón
+    input logic clk,             // Entrada del reloj
+    input logic rst,             // Entrada de reset asíncrono
+    output logic [3:0] digito    // Salida que guarda el valor del dipswitch
+);
+
+    // Registro para almacenar el valor anterior del dipswitch
+    logic [3:0] last_value;
+    // Registro para indicar si el botón fue presionado
+    logic button_pressed;
+
+    always_ff @(posedge clk or posedge rst) begin
+        if (rst) begin
+            digito <= 4'b0000;       // Resetear el dígito a cero
+            last_value <= 4'b0000;   // Resetear el valor anterior
+            button_pressed <= 1'b0;   // Reiniciar el estado del botón
+        end else begin
+            if (button) begin
+                // Si el botón está presionado y es diferente del último estado
+                if (!button_pressed) begin
+                    digito <= dipswitch;  // Actualizar el dígito con el valor del dipswitch
+                    last_value <= dipswitch; // Guardar el último valor
+                end
+                button_pressed <= 1'b1;   // Marcar que el botón fue presionado
+            end else begin
+                button_pressed <= 1'b0;   // Reiniciar el estado del botón
+            end
+        end
+    end
+
+endmodule
+```
+### 16. Parámetros
+
+Los parámetros del módulo se instanciaron de la siguiente manera:
+```
+ dipswitch_decoder dipdec(
+        .clk(clk),
+        .button(boton),
+        .rst(reset),
+        .dipswitch(dipswitch),
+        .digito(digito)
+    );
+```
+### 17. Entradas y Salidas
+
+-	`input logic [3:0] dipswitch` :  Arreglo de 4 bits del número a introducir 
+-	`input logic button` : Señal de botón para aceptar el arreglo del dipswitch.
+-	`input logic clk` : Esta señal representa el reloj del sistema.
+-	`input logic rst` : Entrada de reset del sistema.           
+-	`output logic [3:0] digito` : Arreglo de número de salida para la siguiente etapa.
+
+### 18. Criterios de diseño
+
+Este es un módulo sencillo que permite capturar y decodificar un número en binario colocado en un dipswitch tras ser presionado un botón. El botón de reset hace que el último dígito capturado sea 0 y que el botón pase a ser cero. Posteriormente, el código cuenta con un condicional que una vez presionado el botón el valor del dipswitch se guarda en “Digito”, y este número luego es decodificado y utilizado en la próxima etapa. 
+
+### 19. Testbench
+```SystemVerilog
+module tb_dipswitch_decoder;
+
+    // Parámetros de simulación
+    parameter CLK_PERIOD = 10; // Periodo del reloj en ns
+
+    // Señales de prueba
+    logic [3:0] dipswitch;
+    logic button;
+    logic clk;
+    logic rst;
+    logic [3:0] digito;
+
+    // Instancia del módulo a probar
+    dipswitch_decoder uut (
+        .dipswitch(dipswitch),
+        .button(button),
+        .clk(clk),
+        .rst(rst),
+        .digito(digito)
+    );
+
+    // Generador de reloj
+    initial begin
+        clk = 0;
+        forever #(CLK_PERIOD / 2) clk = ~clk; // Invierto el reloj cada medio periodo
+    end
+
+    // Proceso de prueba
+    initial begin
+        // Inicialización
+        rst = 1; // Activar reset
+        button = 0;
+        dipswitch = 4'b0000;
+        #(CLK_PERIOD); // Esperar un ciclo de reloj
+
+        // Desactivar el reset
+        rst = 0;
+        #(CLK_PERIOD); // Esperar un ciclo de reloj
+
+        // Caso 1: Cambiar dipswitch y presionar botón
+        dipswitch = 4'b0001; // Valor del dipswitch
+        button = 1;          // Presionar el botón
+        #(CLK_PERIOD); // Esperar un ciclo de reloj
+        button = 0;          // Soltar el botón
+        #(CLK_PERIOD); // Esperar un ciclo de reloj
+        $display("Dipswitch: %b, Digito: %b", dipswitch, digito); // Mostrar resultado
+
+        // Caso 2: Cambiar dipswitch y presionar botón
+        dipswitch = 4'b0010; // Nuevo valor del dipswitch
+        button = 1;          // Presionar el botón
+        #(CLK_PERIOD); // Esperar un ciclo de reloj
+        button = 0;          // Soltar el botón
+        #(CLK_PERIOD); // Esperar un ciclo de reloj
+        $display("Dipswitch: %b, Digito: %b", dipswitch, digito); // Mostrar resultado
+
+        // Caso 3: Probar el mismo valor sin presionar el botón
+        dipswitch = 4'b0010; // Mismo valor del dipswitch
+        #(CLK_PERIOD); // Esperar un ciclo de reloj
+        $display("Dipswitch: %b, Digito: %b", dipswitch, digito); // Mostrar resultado
+
+        // Caso 4: Cambiar dipswitch y presionar botón
+        dipswitch = 4'b0100; // Nuevo valor del dipswitch
+        button = 1;          // Presionar el botón
+        #(CLK_PERIOD); // Esperar un ciclo de reloj
+        button = 0;          // Soltar el botón
+        #(CLK_PERIOD); // Esperar un ciclo de reloj
+        $display("Dipswitch: %b, Digito: %b", dipswitch, digito); // Mostrar resultado
+
+        // Fin de la simulación
+        $finish;
+    end
+
+
+
+ 
+    initial begin
+        $dumpfile ("tb_dipswitch_decoder.vcd");
+        $dumpvars (0, tb_dipswitch_decoder);
+    end
+
+endmodule
+```
+En este testbench se introdujeron posibles valores en la variable de entrada dipswitch y se simuló la señal de botón para capturar cuando es adecuado. También se probaron valores de dipswitch sin presionar el botón, lo que hizo que no se imprimieran los resultados. Tras finalizar el testbench la consola mostró lo siguiente:
+
+![image](https://github.com/user-attachments/assets/2b9857d0-b2a9-4980-ad57-19526e6565c8)
+
 
 ### Otros modulos
 - agregar informacion siguiendo el ejemplo anterior.
