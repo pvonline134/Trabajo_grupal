@@ -507,7 +507,7 @@ Esta máquina consta de 5 estados en la que dos de ellos está resumidos. Inicia
 Además, este módulo posee un decodificador que permite la interpretación de los arreglos de 8 bits como un número o letra (tecla de función) según la tecla presionada en la matriz 4x4.
 
 ### 14. Testbench
-```
+```SystemVerilog
 `timescale 1ns/1ps
 
 module lector_4x4_tb;
@@ -626,7 +626,7 @@ endmodule
 ### 16. Parámetros
 
 Los parámetros del módulo se instanciaron de la siguiente manera:
-```
+```SystemVerilog
  dipswitch_decoder dipdec(
         .clk(clk),
         .button(boton),
