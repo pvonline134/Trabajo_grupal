@@ -1,4 +1,4 @@
-# Proyecto 2
+# Sumador con FPGA
 
 ## 1. Abreviaturas y definiciones
 - **FPGA**: Field Programmable Gate Arrays
@@ -10,8 +10,8 @@
 
 ### 3.0 Descripción general del sistema
 
-### 3.1 Subsistema 2
-#### 1. Calculadora sumadora
+### 3.1 FSM para sumar
+#### 1. Código
 ```SystemVerilog
 module calculadora_sumadora (
     input logic [3:0] digito,      // Entrada del dígito (0-9)
@@ -243,7 +243,8 @@ Este testbench prueba el funcionamiento del modulo anterior en diferentes casos,
 Los resultados del testbench se muestran a continuación:
 ![image](https://github.com/user-attachments/assets/6ed71e5b-ba2c-4525-baa0-df73260a13c7)
 
-#### 6. Binario a BCD
+### 3.2 Conversión de binario a BCD
+#### 1. Código
 ```SystemVerilog
 module bin_to_bcd_12bit (
     input logic [11:0] bin,    // Número binario de 12 bits (rango 0-4095)
@@ -284,7 +285,7 @@ module bin_to_bcd_12bit (
     end
 endmodule
 ```
-#### 6. Parámetros
+#### 2. Parámetros
 Instanciación del módulo de binario a BCD:
 ``` SystemVerilog
     bin_to_bcd_12bit bin2bcd (
@@ -292,15 +293,15 @@ Instanciación del módulo de binario a BCD:
         .bcd(int_bcd)
     );
 ```
-#### 7. Entradas y salidas:
+#### 3. Entradas y salidas:
 - `input logic [11:0] bin,` : la señal de entrada del sistema es un numero en binario (o decimal).
 - `output logic [15:0] bcd,` : la señal de salida del sistema muestra a la entrada en formato bcd.
 
-#### 8. Criterios de diseño
+#### 4. Criterios de diseño
 Para este diseño simplemente se siguió el algoritmo del proyecto pasado para lograr pasar un número de binario a bcd con la diferencia que esta vez se usó lógica secuencial y no unicamente sólo lógica combinacional
 
 
-#### 9. Testbench
+#### 5. Testbench
 ```SystemVerilog
 `timescale 1ns/1ps
 module tb_bin_to_bcd_12bit;
@@ -365,7 +366,8 @@ Este testbench prueba el funcionamiento del modulo anterior en diferentes numero
 Los resultados se muestran acontinuación:
 ![image](https://github.com/user-attachments/assets/b70e83de-6281-4452-ad2f-78908d58c56d)
 
-### 10. Teclado 4x4
+### 3.3 Teclado 4x4
+### 1. Código
 
 ```SystemVerilog
 module lector_4x4 (
@@ -487,11 +489,11 @@ endfunction
 
 endmodule
 ```
-### 11. Parámetros 
+### 2. Parámetros 
 
 El teclado no resultó con el comportamiento deseado tras realizar testbenches de comprobación, por lo que no se instanció en ningún momento durante la elaboración del proyecto.
 
-### 12. Entradas y Salidas
+### 3. Entradas y Salidas
 -	`input logic clk` : Esta señal representa el reloj del sistema.
 -	`input logic rst` : Esta señal representa el reset del sistema.
 -	`input logic [3:0] fila` : Este arreglo representa la entrada de la fila presionada.
@@ -499,14 +501,14 @@ El teclado no resultó con el comportamiento deseado tras realizar testbenches d
 -	`output logic [3:0] num` : Este arreglo representa el número capturado y decodificado que pasaría a la siguiente etapa.
 -	`output logic valido`   : Esta señal permite ratificar la validez del dato capturado, pese a que pueden haber múltiples capturas.
 
-### 13. Criterios de diseño
+### 4. Criterios de diseño
 Para el diseño del código se realizó un seguimiento de la máquina de estados mostrada en la siguiente imagen: 
 ![image](https://github.com/user-attachments/assets/e2ad71b9-0f66-450a-a4f1-ee97e53b6fba)
 
 Esta máquina consta de 5 estados en la que dos de ellos está resumidos. Inicialmente el teclado se va a encontrar en “rep” que corresponde al estado de reposo del teclado, cuando nada es presionado o se presiona reset, este va a ser el estado designado. El teclado mantiene todas las filas y columnas encendidas, en el momento en el que se presiona una tecla se da una obstrucción de flujo,  en ese momento que se presiona una tecla se pasa al estado “scan fila”, este corresponde a un input que detectará cual fue la fila de la tecla presionada. Sino se detectó cual fue la fila presionada se pasa al estado de reposo, pero si se detecta correctamente se pasa al estado “scan col”, en este estado se está realizando un cambio constante de la columna activa (apagada realmente) a ritmo del clock, este “shift” entre la columna permite conocer cual fue la tecla presionada. Si esto no es así se vuelve al estado de reposo, pero si se encuentra la tecla presionada se pasa al estado “captura num”, en este se guarda un arreglo de 8 bits donde los primero 4 corresponden a la fila y los últimos 4 a la columna. Si no se realiza una captura se vuelve al estado de escaneo de columna, lo que permitirá capturar de nuevo cuando se de la oportunidad. Si se da una correcta captura se pasa al estado de espera, en este únicamente se espera a que la tecla deje de estar presionada para volver al estado de reposo, esto se hace para que no se de una captura múltiple de un mismo número. 
 Además, este módulo posee un decodificador que permite la interpretación de los arreglos de 8 bits como un número o letra (tecla de función) según la tecla presionada en la matriz 4x4.
 
-### 14. Testbench
+### 5. Testbench
 ```SystemVerilog
 `timescale 1ns/1ps
 
@@ -586,7 +588,8 @@ Para realizar pruebas sobre el módulo diseñado se hizo input de distintas fila
 
 Esta fue la última prueba realizada previo al cambio de intrucciones para trabajar con el dip switch, en esta última version no se estaba realizando un correcto shift de las columnas.
 
-### 15. Decodificador de DipSwitch
+### 3.4 Decodificador de DipSwitch
+### 1. Código
 
 ```SystemVerilog
 module dipswitch_decoder (
@@ -623,7 +626,7 @@ module dipswitch_decoder (
 
 endmodule
 ```
-### 16. Parámetros
+### 2. Parámetros
 
 Los parámetros del módulo se instanciaron de la siguiente manera:
 ```SystemVerilog
@@ -635,7 +638,7 @@ Los parámetros del módulo se instanciaron de la siguiente manera:
         .digito(digito)
     );
 ```
-### 17. Entradas y Salidas
+### 3. Entradas y Salidas
 
 -	`input logic [3:0] dipswitch` :  Arreglo de 4 bits del número a introducir 
 -	`input logic button` : Señal de botón para aceptar el arreglo del dipswitch.
@@ -643,11 +646,11 @@ Los parámetros del módulo se instanciaron de la siguiente manera:
 -	`input logic rst` : Entrada de reset del sistema.           
 -	`output logic [3:0] digito` : Arreglo de número de salida para la siguiente etapa.
 
-### 18. Criterios de diseño
+### 4. Criterios de diseño
 
 Este es un módulo sencillo que permite capturar y decodificar un número en binario colocado en un dipswitch tras ser presionado un botón. El botón de reset hace que el último dígito capturado sea 0 y que el botón pase a ser cero. Posteriormente, el código cuenta con un condicional que una vez presionado el botón el valor del dipswitch se guarda en “Digito”, y este número luego es decodificado y utilizado en la próxima etapa. 
 
-### 19. Testbench
+### 5. Testbench
 ```SystemVerilog
 module tb_dipswitch_decoder;
 
@@ -741,6 +744,8 @@ En este testbench se introdujeron posibles valores en la variable de entrada dip
 
 
 ## 4. Consumo de recursos
+Dado que no se pudo obtener la totalidad del proyecto, esta información estará incompleta, sin embargo, de lo que se logró se obtuvieron los siguientes datos de consumo de recursos.
+
 
 ## 5. Problemas encontrados durante el proyecto
 
