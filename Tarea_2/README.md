@@ -365,6 +365,227 @@ Este testbench prueba el funcionamiento del modulo anterior en diferentes numero
 Los resultados se muestran acontinuación:
 ![image](https://github.com/user-attachments/assets/b70e83de-6281-4452-ad2f-78908d58c56d)
 
+### 10. Teclado 4x4
+
+```SystemVerilog
+module lector_4x4 (
+    input logic clk,
+    input logic rst,
+    input logic [3:0] fila,    // Fila del teclado
+    output logic [3:0] columna, // Columna del teclado
+    output logic [3:0] num,     // Dígito presionado
+    output logic valido         // Número capturado
+);
+
+// Estados
+typedef enum logic [2:0] {
+    rep          = 3'b000,  // Reposo
+    scan_fila    = 3'b001,  // Escaneo fila
+    scan_col     = 3'b010,  // Escaneo columna
+    captura_num   = 3'b011,  // Captura de dígito
+    espera       = 3'b100   // Espera a que el botón deje de presionarse 
+} Estado;
+
+Estado Estado_act, Estado_sig;
+
+logic [1:0] col_contador;     // Contador de columnas
+logic [3:0] num_actual;       // Registro para el número capturado
+
+// Configuracion de reset
+always_ff @(posedge clk or negedge rst) begin
+    if (rst) begin
+        Estado_act <= rep;
+        col_contador <= 2'b00;  // Asegura que col_contador se inicializa en el estado de reposo
+        num_actual <= 4'b0000;  // Inicializa num_actual para evitar latch
+    end 
+end
+
+// Lógica de transición y salida
+always_comb begin
+    // Asignaciones por defecto para evitar latches
+    Estado_sig = Estado_act;
+    columna = 4'b1111;       // Deshabilitar columnas por defecto
+    valido = 1'b0;           // Deshabilitar el valor válido
+    num = 4'b0000;           // Asignar un valor predeterminado a `num`
+    col_contador = 2'b00;    // Inicializar col_contador con un valor predeterminado
+    num_actual = 4'b0000;    // Inicializar num_actual con un valor predeterminado para evitar latch
+
+    case (Estado_act)
+
+        rep: begin
+            if (fila != 4'b1111)  // Verificar si hay fila presionada
+                Estado_sig = scan_fila;
+        end
+
+        scan_fila: begin
+            columna = 4'b1110;      // Activar columna 0
+            Estado_sig = scan_col;
+        end
+
+        scan_col: begin
+            // Reasignación de col_contador en cada estado de la columna
+            case (col_contador)
+                2'b00: columna = 4'b1110; // Activar columna 0
+                2'b01: columna = 4'b1101; // Activar columna 1
+                2'b10: columna = 4'b1011; // Activar columna 2
+                2'b11: columna = 4'b0111; // Activar columna 3
+            endcase
+
+            if (fila != 4'b1111) begin  // Si alguna tecla es presionada
+                num_actual = capturar_tecla(fila, col_contador);  // Capturar dígito
+                Estado_sig = captura_num;
+            end else begin
+                col_contador = col_contador + 1;  // Incrementar el contador
+
+                if (col_contador == 2'b11) begin
+                    col_contador = 2'b00;         // Reiniciar el contador al final de las columnas
+                    Estado_sig = rep;             // Volver al estado de reposo
+                end
+            end
+        end
+
+        captura_num: begin
+            num = num_actual;  // Dígito a la salida
+            valido = 1'b1;     // Señal de dígito válido
+            Estado_sig = espera;
+        end
+
+        espera: begin
+            if (fila == 4'b1111) // Soltar tecla
+                Estado_sig = rep;
+        end
+
+    endcase
+end
+
+// Función para capturar el número en función de la fila y columna activada
+function logic [3:0] capturar_tecla(input logic [3:0] fila, input logic [1:0] columna);
+    case ({fila, columna})
+        6'b1110_00: capturar_tecla = 4'd1;
+        6'b1110_01: capturar_tecla = 4'd2;
+        6'b1110_10: capturar_tecla = 4'd3;
+        6'b1110_11: capturar_tecla = 4'd0;  // A
+
+        6'b1101_00: capturar_tecla = 4'd4;
+        6'b1101_01: capturar_tecla = 4'd5;
+        6'b1101_10: capturar_tecla = 4'd6;
+        6'b1101_11: capturar_tecla = 4'd0;  // B
+
+        6'b1011_00: capturar_tecla = 4'd7;
+        6'b1011_01: capturar_tecla = 4'd8;
+        6'b1011_10: capturar_tecla = 4'd9;
+        6'b1011_11: capturar_tecla = 4'd0;  // C
+
+        6'b0111_00: capturar_tecla = 4'd0;  // *
+        6'b0111_01: capturar_tecla = 4'd0;
+        6'b0111_10: capturar_tecla = 4'd0;  // #
+        6'b0111_11: capturar_tecla = 4'd0;
+
+        default: capturar_tecla = 4'd0;
+    endcase
+endfunction
+
+endmodule
+```
+### 11. Parámetros 
+
+El teclado no resultó con el comportamiento deseado tras realizar testbenches de comprobación, por lo que no se instanció en ningún momento durante la elaboración del proyecto.
+
+### 12. Entradas y Salidas
+-	`input logic clk` : Esta señal representa el reloj del sistema.
+-	`input logic rst` : Esta señal representa el reset del sistema.
+-	`input logic [3:0] fila` : Este arreglo representa la entrada de la fila presionada.
+-	`output logic [3:0] columna` : Este arreglo representa la columna de la tecla presionada.
+-	`output logic [3:0] num` : Este arreglo representa el número capturado y decodificado que pasaría a la siguiente etapa.
+-	`output logic valido`   : Esta señal permite ratificar la validez del dato capturado, pese a que pueden haber múltiples capturas.
+
+### 13. Criterios de diseño
+Para el diseño del código se realizó un seguimiento de la máquina de estados mostrada en la siguiente imagen: 
+![image](https://github.com/user-attachments/assets/e2ad71b9-0f66-450a-a4f1-ee97e53b6fba)
+
+Esta máquina consta de 5 estados en la que dos de ellos está resumidos. Inicialmente el teclado se va a encontrar en “rep” que corresponde al estado de reposo del teclado, cuando nada es presionado o se presiona reset, este va a ser el estado designado. El teclado mantiene todas las filas y columnas encendidas, en el momento en el que se presiona una tecla se da una obstrucción de flujo,  en ese momento que se presiona una tecla se pasa al estado “scan fila”, este corresponde a un input que detectará cual fue la fila de la tecla presionada. Sino se detectó cual fue la fila presionada se pasa al estado de reposo, pero si se detecta correctamente se pasa al estado “scan col”, en este estado se está realizando un cambio constante de la columna activa (apagada realmente) a ritmo del clock, este “shift” entre la columna permite conocer cual fue la tecla presionada. Si esto no es así se vuelve al estado de reposo, pero si se encuentra la tecla presionada se pasa al estado “captura num”, en este se guarda un arreglo de 8 bits donde los primero 4 corresponden a la fila y los últimos 4 a la columna. Si no se realiza una captura se vuelve al estado de escaneo de columna, lo que permitirá capturar de nuevo cuando se de la oportunidad. Si se da una correcta captura se pasa al estado de espera, en este únicamente se espera a que la tecla deje de estar presionada para volver al estado de reposo, esto se hace para que no se de una captura múltiple de un mismo número. 
+Además, este módulo posee un decodificador que permite la interpretación de los arreglos de 8 bits como un número o letra (tecla de función) según la tecla presionada en la matriz 4x4.
+
+### 14. Testbench
+```
+`timescale 1ns/1ps
+
+module lector_4x4_tb;
+
+    // Señales
+    reg clk;                // Señal de reloj
+    reg rst;                // Señal de reset
+    reg [3:0] fila;         // Entradas de filas
+    wire [3:0] columna;     // Salida de columnas
+    wire [3:0] num;         // Salida del dígito presionado
+    wire valido;            // Señal de número capturado válido
+
+    // Instanciar el diseño del teclado 4x4
+    lector_4x4 uut (
+        .clk(clk),
+        .rst(rst),
+        .fila(fila),
+        .num(num),
+        .columna(columna),
+        .valido(valido)
+    );
+
+    // Generación de la señal de reloj
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // Generar reloj con un periodo de 10 unidades de tiempo
+    end
+
+    // Testbench
+    initial begin
+        // Inicialización
+        rst = 1;
+        fila = 4'b1111; // Ninguna tecla presionada
+
+        #20 
+        rst = 0;    // Liberar el reset
+
+        // Escenario 1: Simular pulsación de la tecla en fila 0 y columna 0
+        fila = 4'b1110; // La fila 0 está activada (tecla presionada)
+        #20;            // Esperar un ciclo de escaneo de columnas
+        fila = 4'b1111; // Liberar la tecla
+        
+        // Escenario 2: Simular pulsación de la tecla en fila 2 y columna 1
+        #50;
+        fila = 4'b1011; // La fila 2 está activada (tecla presionada)
+        #20;
+        fila = 4'b1111; // Liberar la tecla
+        
+        // Escenario 3: Simular pulsación de la tecla en fila 3 y columna 2
+        #50;
+        fila = 4'b0111; // La fila 3 está activada (tecla presionada)
+        #20;
+        fila = 4'b1111; // Liberar la tecla
+
+        // Terminar la simulación
+        #100;
+        $finish;
+    end
+
+    // Monitor para observar los resultados
+    initial begin
+        $monitor("Time: %0t | Fila: %b | Columna: %b | Digito capturado: %0d | Valido: %b",
+                  $time, fila, columna, num, valido);
+    end
+
+    initial begin
+        $dumpfile("lector_4x4_tb.vcd");
+        $dumpvars(0, lector_4x4_tb);
+    end
+
+endmodule
+```
+Para realizar pruebas sobre el módulo diseñado se hizo input de distintas filas presionando distintas teclas en el teclado, este debía imprimir en la consola la columna en la cual se detuvo para hacer la captura, el dígito capturado en decimal, y si el digito era válido o no. El resultado de la consola se ve a continuación:
+
+![image](https://github.com/user-attachments/assets/c1bda661-8c17-4e9c-afb3-2318552e309a)
+
+Esta fue la última prueba realizada previo al cambio de intrucciones para trabajar con el dip switch, en esta última version no se estaba realizando un correcto shift de las columnas.
+
 
 ### Otros modulos
 - agregar informacion siguiendo el ejemplo anterior.
