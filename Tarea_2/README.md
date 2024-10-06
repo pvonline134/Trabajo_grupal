@@ -739,7 +739,7 @@ En este testbench se introdujeron posibles valores en la variable de entrada dip
 ![image](https://github.com/user-attachments/assets/2b9857d0-b2a9-4980-ad57-19526e6565c8)
 
 ### 3.5 Control de los 7 segmentos
-### 1. Código
+#### 1. Código
 ```SystemVerilog
 module seg7_disp (
     input logic clk,
@@ -921,9 +921,234 @@ A continuación se muestan imágenes de osciloscopio donde se observa cada trans
 
 
 
+### 3.6 Selector de valor a mostrar
+
+### Código
+``` SystemVerilog
+module show_num (
+    input logic estado,  // Señal de control proveniente de otro módulo
+    input logic btnsum,
+    input logic [11:0] numero1,    // Primera entrada
+    input logic [11:0] numero2,    // Segunda entrada
+    input logic [11:0] resultado,
+    output logic [11:0] binario
+);
+
+    always_comb begin
+        if (btnsum) begin
+            binario = resultado;
+        end 
+        else begin
+            if (estado == 2'b00)begin
+            binario = numero1;
+            end
+            else begin
+            binario = numero2;
+            end
+        end
+    end
+
+endmodule
+```
+### 2. Parámetros 
+``` SystemVerilog
+    show_num shnum (
+        .estado(int_estado),
+        .numero1(int_numero1),
+        .numero2(int_numero2),
+        .resultado(int_resultado),
+        .binario(binaro),
+        .btnsum(btnsuma)
+    );
+```
+### 3. Entradas y Salidas
+- `input logic estado` : Viene de la FSM se usa para saber que número se está insertando y con ello cual mostrar.
+- `input logic btnsum` : Viene de la FSM indica si se está haciendo la suma (a + b), mientras se mantenga apretado el botón de btnsum se mostrará el resultado.
+- `input logic [11:0] numero1` :Valor binario del primer sumando.
+- `input logic [11:0] numero2` :Valor binario del segundo sumando.
+- `input logic [11:0] resultado` :Resultado de la suma.
+- `output logic [11:0] binario` :Salida que irá al código del 7 segmentos para mostrar el número deseado.
+
+### 4. Criterios de diseño
+Dado que los valores que se desearían mostrar en los 7 segmentos están guardados en variables es necesario un código el cual lea estas variables y las envíe al código del punto 3.5 para ser mostradas dependiendo de impulsos de entrada, estos determinan que se mostrará.
+Este código presenta un tipo de jerarquía, donde el botón btnsuma cuando es apretado, restringe que se muestre numero 1 y numero2. Si no está apretado y si "estado" =0, se muestra numero1, de lo contrario se muestra número2.
+
+### 5. Testbench
+
+``` SystemVerilog
+module tb_bin_to_bcd_12bit;
+
+  // Declaración de señales para el DUT (Device Under Test)
+  logic estado;
+  logic btnsum;
+  logic [11:0] numero1;
+  logic [11:0] numero2;
+  logic [11:0] resultado;
+  logic [11:0] binario;
+
+  // Instanciar el DUT
+  show_num uut (
+    .estado(estado),
+    .btnsum(btnsum),
+    .numero1(numero1),
+    .numero2(numero2),
+    .resultado(resultado),
+    .binario(binario)
+  );
+
+  // Bloque inicial para la simulación
+  initial begin
+    // Inicializar señales con valores binarios
+    btnsum = 0;
+    estado = 0;
+    numero1 = 12'b101010101010;  // Valor binario para numero1
+    numero2 = 12'b010101010101;  // Valor binario para numero2
+    resultado = 12'b111100001111; // Valor binario para resultado
+
+    // Simulación de los casos con btnsum = 1
+    #10;
+    btnsum = 1; // Cuando btnsum es 1, binario debe ser igual a "resultado"
+    #10;
+
+    // Cambiar btnsum a 0 y verificar estado == 0 (binario debe ser numero1)
+    btnsum = 0;
+    estado = 0;
+    #10;
+
+    // Cambiar estado a 1 (binario debe ser numero2)
+    estado = 1;
+    #10;
+
+    // Finalizar la simulación
+    $stop;
+  end
+
+  // Monitor para observar los valores de binario, estado y btnsum
+  initial begin
+    $monitor("Time=%0t | btnsum=%b | estado=%b | numero1=%b | numero2=%b | resultado=%b | binario=%b", 
+              $time, btnsum, estado, numero1, numero2, resultado, binario);
+  end
+  
+    initial begin
+        $dumpfile ("tb_bin_to_bcd_12bit.vcd");
+        $dumpvars (0, tb_bin_to_bcd_12bit);
+    end
+
+endmodule
+```
+En la terminal se muestran los siguientes valores:
+![image](https://github.com/user-attachments/assets/48e7e89f-0747-47b4-8147-ead5678196d6)
+Vease que cuando btnsuma = 1, no importa el valor de estado, pues, este está por encima en la jerarquía. Cuando btnsuma = 0, el valor de "binario" cambia entre numero1 y numero2 dependiendo del valor de "estado".
+
 
 ### Otros modulos
-- agregar informacion siguiendo el ejemplo anterior.
+Se muesta tambien el "top_module" o modulo principal:
+
+``` SystemVerilog
+module module_call(
+    input logic clk,            // Señal de reloj
+    input logic reset,          // Señal de reset
+    output logic segA,
+    output logic segB,
+    output logic segC,
+    output logic segD,
+    output logic segE,
+    output logic segF,
+    output logic segG,
+    output logic dispuni,   
+    output logic dispdec,
+    output logic dispcen,
+    output logic dispmil,
+    output logic [1:0] disp,
+    output reg clk_cut,
+    output logic a, b, c, d, e,
+    input logic boton,     
+    input logic clear_disp,
+    input logic p,
+    input logic btnsuma,
+    input logic [3:0] dipswitch,
+    output logic [3:0] digito,
+    output logic [11:0] binario
+
+);  
+
+    logic [11:0] int_numero1;
+    logic [11:0] int_numero2;
+    logic [11:0] int_resultado;
+    logic int_estado;
+    logic [3:0] int_digito;
+    logic [11:0] int_binario;
+    logic [15:0] int_bcd;
+
+
+    dipswitch_decoder dipdec(
+        .clk(clk),
+        .button(boton),
+        .rst(reset),
+        .dipswitch(dipswitch),
+        .digito(digito)
+    );
+    
+    calculadora_sumadora calcsum(
+        .clk(clk),
+        .reset(reset),
+        .clear_disp(clear_disp),
+        .p(p),
+        .e(btnsuma),
+        .numero1(int_numero1),
+        .numero2(int_numero2),
+        .resultado(int_resultado),
+        .estado(int_estado),
+        .digito(digito),
+        .boton(boton)
+    );
+    
+    // Instanciación modulo binario a bcd
+    bin_to_bcd_12bit bin2bcd (
+        .bin(binario),
+        .bcd(int_bcd)
+    );
+
+    show_num shnum (
+        .estado(int_estado),
+        .numero1(int_numero1),
+        .numero2(int_numero2),
+        .resultado(int_resultado),
+        .binario(binaro),
+        .btnsum(btnsuma)
+    );
+
+    // Instanciación modulo 7 segmentos
+    seg7_disp s7d (
+        .clk(clk),
+        .reset(reset),
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .e(e),
+        .segA(segA),
+        .segB(segB),
+        .segC(segC),
+        .segD(segD),
+        .segE(segE),
+        .segF(segF),
+        .segG(segG),
+        .dispuni(dispuni),      // Conectar salidas
+        .dispdec(dispdec),
+        .dispcen(dispcen),
+        .dispmil(dispmil),
+        .clk_cut(clk_cut),
+        .disp(disp),
+        .bcd(int_bcd)
+    );
+
+
+
+endmodule
+
+```
+
 
 
 ## 4. Consumo de recursos
