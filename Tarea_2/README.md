@@ -738,6 +738,189 @@ En este testbench se introdujeron posibles valores en la variable de entrada dip
 
 ![image](https://github.com/user-attachments/assets/2b9857d0-b2a9-4980-ad57-19526e6565c8)
 
+### 3.5 Control de los 7 segmentos
+### 1. Código
+```SystemVerilog
+module seg7_disp (
+    input logic clk,
+    input logic reset,
+    output logic segA,
+    output logic segB,
+    output logic segC,
+    output logic segD,
+    output logic segE,
+    output logic segF,
+    output logic segG,
+    output logic a, b, c, d, e,
+    output logic dispuni,     
+    output logic dispdec,
+    output logic dispcen,
+    output logic dispmil,
+    output logic [1:0] disp,
+    output reg clk_cut,
+    input logic [15:0] bcd
+
+);
+
+    reg [31:0] counter;    // Contador de ciclos de reloj
+    // Estado inicial
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            counter <= 0;
+            clk_cut <= 0;
+        end else begin
+            if (counter == (1000-1)) begin
+                counter <= 0;
+                clk_cut <= ~clk_cut;  // Cambia la señal de salida
+            end else begin
+                counter <= counter + 1;
+            end 
+        end
+    end
+
+    reg [1:0] cycle_count;
+            // Variable para contar los ciclos
+    always @(posedge clk_cut) begin
+        begin
+            // Cambiar variables de acuerdo con el ciclo
+            case (cycle_count)
+                2'b00: begin
+                    dispuni = 0; 
+                    dispdec = 1;
+                    dispcen = 1;
+                    dispmil = 1;
+                    disp = 2'b00;
+                end
+                2'b01: begin
+                    dispuni = 1;
+                    dispdec = 0; 
+                    dispcen = 1;
+                    dispmil = 1;
+                    disp = 2'b01;
+                end
+                2'b10: begin
+                    dispuni = 1;
+                    dispdec = 1;
+                    dispcen = 0; 
+                    dispmil = 1;
+                    disp = 2'b10;
+                end
+                2'b11: begin
+                    dispuni = 1;
+                    dispdec = 1;
+                    dispcen = 1;
+                    dispmil = 0; 
+                    disp = 2'b11;
+                end
+            endcase
+
+            // Incrementar el contador de ciclos (vuelve a 0 después del cuarto ciclo)
+            cycle_count <= cycle_count + 1;
+        end
+        if (reset) begin
+            a = 0;
+            b = 0;
+            c = 0;
+            d = 0;
+            e = 0;
+        end
+        case (disp)
+            2'b00: begin
+                a = bcd[3];
+                b = bcd[2];
+                c = bcd[1];
+                d = bcd[0];
+                e = 0;
+            end
+            2'b01: begin
+                a = bcd[7];
+                b = bcd[6];
+                c = bcd[5];
+                d = bcd[4];
+                e = 0;
+            end
+            2'b10: begin
+                a = bcd[11];
+                b = bcd[10];
+                c = bcd[9];
+                d = bcd[8];
+                e = 0;
+            end
+            2'b11: begin
+                a = bcd[15];
+                b = bcd[14];
+                c = bcd[13];
+                d = bcd[12];
+                e = 0;
+            end
+        endcase    
+            
+    end
+    assign segA = ~((~b & ~d & ~e) | (~a & c & ~e) | (b & d & ~e) | (a & ~c & ~e)); 
+    assign segB = ~((~b & ~e) | (~c & ~d & ~e) | (~a & c & d & ~e) | (a & c & e) | (a & b & ~c) | (a & ~d & ~e));
+    assign segC = ~((d & ~e) | (a & c) | (a & b & e) | (~b & ~c & ~e) | (~a & b & ~e));
+    assign segD = ~((~b & ~d & ~e) | (~a & ~b & c & ~e) | (b & ~c & d & ~e) | (~a & c & ~d & ~e) | (a & ~c & ~e) | (a & b & d & ~e));
+    assign segE = ~((~b & ~d & ~e) | (~a & c & ~d & ~e) | (a & ~c & ~d & ~e));
+    assign segF = ~((~a & b & ~c & ~e) | (a & ~b & ~c & ~e) | (a & b & c & ~e) | (~a & ~c & ~d & ~e) | (~a & b & ~d & ~e) | (a & ~b & ~d & ~e));
+    assign segG = ~((~a & ~b & c & ~e) | (b & ~c & ~e) | (a & ~c & ~e) | (a & b & ~e) | (~a & c & ~d & ~e));
+
+   
+endmodule
+```
+### 2. Parámetros 
+``` SystemVerilog
+    seg7_disp s7d (
+        .clk(clk),
+        .reset(reset),
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .e(e),
+        .segA(segA),
+        .segB(segB),
+        .segC(segC),
+        .segD(segD),
+        .segE(segE),
+        .segF(segF),
+        .segG(segG),
+        .dispuni(dispuni),      // Conectar salidas
+        .dispdec(dispdec),
+        .dispcen(dispcen),
+        .dispmil(dispmil),
+        .clk_cut(clk_cut),
+        .disp(disp),
+        .bcd(int_bcd)
+    );
+```
+### 3. Entradas y Salidas
+-	`input logic [15:0] bcd` : Entrdad en BCD para mostrar el digito cada display.
+-	`input logic clk y reset` : Entradas de reloj y reset para sincronización.
+-	`output logic segX` La salida de cada segmento de los display.
+-	`output logic a, b, c, d, e,` : Valores binarios de cada dígito d:menos significativo a:más signficiativo e: variable con valor 0, siempre.
+-	`output logic dispuni` : Salida de transistor para display de unidades.
+-	`output logic dispdec` : Salida de transistor para display de decena.
+-	`output logic dispcen` : Salida de transistor para display de centenas.
+-	`output logic dispmil` : Salida de transistor para display de miles.
+-	`output logic [1:0] disp` : Variable usada para sincronizar transistor con digito a mostrar.
+-	`output reg clk_cut` : Señal de reloj pasada por un divisor de frecuencia.
+
+### 4. Criterios de diseño
+Primero se va a hablar de las salidas de los transistores, pues, esto fue con lo que se empezó. Al principio se notó que al conectar la salida del reloj a los transistores hacía que la señal de reloj se callera, esto se observó un osciloscopio. Se notó que al bajar la frecuencia, este efecto se veía reducido en gran medida. Por esto la primera parte del código, desde la línea 22 hasta la 36, consiste en un divisor de frecuencia. Al hacer esto, la señal llegaba de manera apropiada a cada transistor.
+
+Desde la línea 38 hasta la 72, el código consiste en un case, el cual enciende y apaga los transistores de manera que solo uno esté encendido a la vez. La variable "cycle_count" es de 2 bits, al pasar los 4 estados (cada transistor se encendió una vez), este hace overflow y se reinicia el ciclo. La variable "disp" se usa para escoger el valor del arreglo de BCD se debe mostar en ese momento. Aquí hay que aclarar que solo se usaron 7 líneas para los cuatro 7 segmentos, por esto es que se usa este código, el cual enciende y apaga los transistores de manera sincronizada, a la vez que el dígito a mostrar se envía por las 7 líneas, esto ocurre tan rápido que parece que todos están encendidos a la vez y se logra mostrar 4 dígitos distintos con las mismas 7 salidas.
+
+De la línea 77 hasta la 113, se usa la variable "disp" junto con un case para seleccionar los valores del arreglo de BCD a mostar. 
+
+Por último, de la 116 hasta el final, se usa código combinacional con ecuaciones booleanas, esto se usa para encender cada segmentos dependiendo del número (en binario) indicado por el arreglo BCD antes mencionado.
+
+A continuación se muestan imágenes de osciloscopio donde se observa cada transistor encendiendoce y apagandoce. Dado que son transistores PNP, estos se encienden cuando la entrada de la base es cero o low.  (Dado que no se contaba con un osciloscopio de 4 canales, se muestran dos osciloscopio de 2 canales, la idea es que se vea el comportamiento de las señales y no tanto el timming).
+![DS0001](https://github.com/user-attachments/assets/a67f68f2-e82e-4644-8bbc-72702a57869d)
+
+![DS0003](https://github.com/user-attachments/assets/fe82790a-55ad-40fb-879a-bb13e1e62c59)
+
+
+
 
 ### Otros modulos
 - agregar informacion siguiendo el ejemplo anterior.
@@ -746,9 +929,13 @@ En este testbench se introdujeron posibles valores en la variable de entrada dip
 ## 4. Consumo de recursos
 Dado que no se pudo obtener la totalidad del proyecto, esta información estará incompleta, sin embargo, de lo que se logró se obtuvieron los siguientes datos de consumo de recursos.
 
+![pnr](https://github.com/user-attachments/assets/787055e7-3802-47a7-836e-0d76e80c7e7d)
 
 ## 5. Problemas encontrados durante el proyecto
+Para la realización de este proyecto el equipo se topó con multitud de problemas y errores a la hora de implementar cada unos de los módulos.
+Para el teclado, el principal problema fue capturar los datos, la implementación del clk probó ser un reto, el cual, no se pudo superar. A la hora de que la señal de cada línea de hacía "low" se complicaba capturar la señal por la entrada de datos de la FPGA.
+Para el dipswitch, se tuvieron más o menos los mismos problemas, pues, si se logró capturar los datos provenientes de este, sin embargo, el problema fue la sincronización del mundo real al digital, debido a esto, no se logró insertar los datos de manera apropiada.
+En cuanto a la FSM para sumar y la codificación de bianrio a BCD, no hubo mayores problemas más allá del reto que ya supone el diseño de un módulo. Estos funcionaron apropiadamente salvo algunos detalles. En específico con la FSM, que al cambiar de teclado a dipswitch se presentaron problemas.
 
-## Apendices:
-### Apendice 1:
-texto, imágen, etc
+
+
