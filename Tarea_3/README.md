@@ -395,7 +395,7 @@ module booth_tb;
 
 endmodule
 ```
-Este testbench tiene como función probar diferentes casos de multiplicación, en este caso se probó con 99*-99, 0*7, 71*8, 5*5, 30*5 y 88*88
+Este testbench tiene como función probar diferentes casos de multiplicación, en este caso se probó con 99*-99, 0* 7, 71* 8, 5* 5, 30 * 5 y 88* 88
 Donde los resultados se muestran a continuación.
 ![image](https://github.com/user-attachments/assets/e3dbcba8-db5e-4e8f-a5e3-1b2d629c09b9)
 Finalmente en el siguiente wave view se puede observar como la salida Z empieza a tener valores cuando se inicia la multiplicación (se presiona start), sin embargo, su valor real final se muestra cuando la señal de valid es 1.
