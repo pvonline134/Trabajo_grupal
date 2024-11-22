@@ -1,4 +1,4 @@
-# Nombre del proyecto
+# Multiplicador con teclado 
 
 ## 1. Abreviaturas y definiciones
 - **FPGA**: Field Programmable Gate Arrays
