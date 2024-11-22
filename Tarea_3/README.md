@@ -398,8 +398,11 @@ endmodule
 Este testbench tiene como función probar diferentes casos de multiplicación, en este caso se probó con 99*-99, 0* 7, 71* 8, 5* 5, 30 * 5 y 88* 88
 Donde los resultados se muestran a continuación.
 ![image](https://github.com/user-attachments/assets/e3dbcba8-db5e-4e8f-a5e3-1b2d629c09b9)
+
 Finalmente en el siguiente wave view se puede observar como la salida Z empieza a tener valores cuando se inicia la multiplicación (se presiona start), sin embargo, su valor real final se muestra cuando la señal de valid es 1.
+
 ![image](https://github.com/user-attachments/assets/420a7ad0-2dee-469a-832d-f59ddb5fdf49)
+
 Como se puede observar en el instante que valid es 1 Z obtiene el valor de 7744 (esto para la multiplicación de 88*88) y tambien en ese mismo instante Z y Y adquieren los valores para la siguiente multiplicación.
 
 
