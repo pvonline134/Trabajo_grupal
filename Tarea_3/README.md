@@ -190,6 +190,335 @@ Por último, e usa código combinacional con ecuaciones booleanas, esto se usa p
 En esta ocasión también se utilizó un 5to display de 7 segmentos. Este tenía como único uso mostrar si el número era negativo o no. Para esto se hizo uso únicamente del segmento central del display, este se activaba dependiendo de una bandera que indicaba si el número digitado o el resultado de la multiplicación era negativo. Este negativo se encuentra fuera del módulo de multiplicación y únicamente es utilizado como un XOR que permite con lógica matemática saber si encenderse o no.
 
 ### 3.2 Teclado
+Debido a la gran extensión y la cantidad de módulos que componenen este sistema, se optó por hacer una descripción general de este.
+#### 1. Códigos
+##### 1.1 Clk_cut_module
+```SystemVerilog
+    module clk_cut_module (
+    input logic clk,
+    input logic reset,
+    input logic stop_flag,
+    output logic clk_cut,
+    output logic mostrar_dato,
+    output logic enable_input,
+    output logic reset_input_ff
+    
+);
+
+logic [31:0] counter;
+logic [31:0] stop_count;
+
+always_ff @(posedge clk or posedge reset) begin
+        if (reset) begin
+            counter <= 0;
+            clk_cut <= 0;
+            stop_count <= 0;
+            mostrar_dato <= 0;
+            enable_input <= 1;
+            reset_input_ff <= 0;
+        end 
+        else if (stop_flag || stop_count != 0) begin
+            stop_count <= stop_count + 1;
+            enable_input <= 0;
+            if (stop_count == 15000) begin //15000
+                mostrar_dato <= 1;
+                reset_input_ff <= 1;
+            end
+            if (stop_count == 15001) begin //15001
+                mostrar_dato <= 0;  //Para pruebas de fpga en leds: mostrar_dato <= 1 
+                reset_input_ff <= 0;
+            end
+            if (stop_count == 9900000 ) begin //Se debe modificar de acuerdo al tiempo de rebote de las teclas   //9900000
+            //indica el número de ciclos clk //En la vida real debe ser un valor alto acorde a 27 000 del contador
+                stop_count <= 0;
+                enable_input <= 1;
+            end
+        end
+        else begin
+            if (counter == (27000-1)) begin  //Para funcionamiento 27 000-1, para simular 2-1
+                counter <= 0;
+                clk_cut <= ~clk_cut;  // Cambia la señal de salida
+            end else begin
+                counter <= counter + 1;
+            end 
+        end
+    end
+
+endmodule
+```
+Descripción: Este código se encarga de generar la señal de reloj necesaria para encender y apagar las columnas para poder leer el teclado matricial 4x4. Este no genera la salida hacia el teclado, sino, solo el reloj divido "clk_cut". Este a la vez, genera otras señales como "reset_input_ff" para reiniciar el conteo. Tambien se encarga de detener el ciclado de la columnas cuando "stop_flag" se hace HIGH, y mantiene el estado de no ciclar mientras que "stop_count" sea diferente a 0.
+
+##### 1.2 colum_on
+```SystemVerilog
+    module colum_on (
+    input logic clk_cut,
+    input logic reset,
+    output logic [3:0] colum,
+    output logic [1:0] colum_code
+
+);
+
+    always_ff @ (posedge clk_cut or posedge reset)
+        if (reset) begin
+            colum_code <= 2'b00;
+        end
+        else begin
+            colum_code = colum_code + 1;
+        end
+
+
+    always_comb begin //logica combiancional para salidas al teclado
+        case (colum_code)
+            2'b00: begin
+                colum[0] = 1;
+                colum[1] = 0;
+                colum[2] = 0;
+                colum[3] = 0;
+            end
+            2'b01: begin
+                colum[0] = 0;
+                colum[1] = 1;
+                colum[2] = 0;
+                colum[3] = 0;
+            end
+            2'b10: begin
+                colum[0] = 0;
+                colum[1] = 0;
+                colum[2] = 1;
+                colum[3] = 0;
+            end
+            2'b11: begin
+                colum[0] = 0;
+                colum[1] = 0;
+                colum[2] = 0;
+                colum[3] = 1;
+            end
+        endcase
+        
+    end
+
+
+endmodule
+
+```
+Descripición: Usando la señal de reloj divida de "clk_cut" genera un contador con la parte secuencial del código, a partir de este se genera un código de columna el cual va cambiando entre un valor binario de 0 a 3. Con la parte combiancional se generan los pulsos a la salida hacia el teclado.
+
+#### 1.3 Row_detect
+```SystemVerilog
+    module row_detect (
+    input logic [3:0] row,
+    output logic stop_flag,
+    output logic [1:0] row_code //codificación de la tecla presionada
+
+);
+
+    always_comb begin
+        case (row)
+            4'b0001: begin
+                stop_flag = 1;
+                row_code = 2'b00;
+            end
+            4'b0010: begin
+                stop_flag = 1;
+                row_code = 2'b01;
+            end
+            4'b0100: begin
+                stop_flag = 1;
+                row_code = 2'b10;
+            end
+            4'b1000: begin
+                stop_flag = 1;
+                row_code = 2'b11;
+            end
+            default: begin
+                stop_flag = 0;
+                row_code = 2'bz;
+            end
+
+        endcase
+    end
+endmodule
+```
+Descripición: Está conectado al teclado por medio de "input_sync", haciendo uso de los pulsos en cada columna y al tocar una tecla, "row[x]" se hace HIGH, x corresponde a la fila donde se detectó una conexión, al detectar esto, "stop_flag" se enciende y detiene el contador de "clk_cut_module" y genera un código para esa fila "row_code".
+
+#### 1.4 deco_out
+```SystemVerilog
+    module deco_out (
+    input logic [3:0] q_in,
+    output logic [3:0] num_out
+
+);
+
+    always_comb begin
+
+        case(q_in)
+            4'b0000: begin
+                num_out = 4'b1010; //A 10
+            end
+            4'b0001: begin
+                num_out = 4'b1011; //B 11
+            end
+            4'b0010: begin
+                num_out = 4'b1100; //C 12
+            end
+            4'b0011: begin
+                num_out = 4'b1101; //D 13
+            end
+            4'b0100: begin
+                num_out = 4'b0011; //3
+            end
+            4'b0101: begin 
+                num_out = 4'b0110; //6
+            end
+            4'b0110: begin
+                num_out = 4'b1001; //9
+            end
+            4'b0111: begin
+                num_out = 4'b1110; //#
+            end
+            4'b1000: begin
+                num_out = 4'b0010; //2
+            end
+            4'b1001: begin
+                num_out = 4'b0101; //5
+            end
+            4'b1010: begin
+                num_out = 4'b1000; //8
+            end
+            4'b1011: begin
+                num_out = 4'b0000; //0
+            end
+            4'b1100: begin
+                num_out = 4'b0001; //1
+            end
+            4'b1101: begin
+                num_out = 4'b0100; //4
+            end
+            4'b1110: begin
+                num_out = 4'b0111; //7
+            end
+            4'b1111: begin
+                num_out = 4'b1111; //*
+            end
+            default: num_out = 4'bz; //alta impedancia
+        endcase
+    end
+    
+endmodule
+```
+Descripción: Usando q_in que viene de output_FF, se genera un número de salida a partir del valor que se encuentra en q_in[3:0]. Estos números de salida corresponden a los del teclado.
+
+#### 1.4 output_ff
+```SystemVerilog
+    module output_ff (
+    input  logic clk,     
+    input  logic reset,    
+    input  logic enable,    
+    input  logic mostrar_dato,   
+    input  logic d,     
+    output logic q 
+);
+
+    logic q_reg; 
+
+    always_ff @(posedge clk or posedge reset) begin
+        if (reset) begin
+            q_reg <= 1'b0;           
+        end else if (enable) begin
+            q_reg <= d;          
+        end
+       
+    end
+
+    assign q = mostrar_dato ? q_reg : 1'b0; 
+
+endmodule
+```
+Descripción: Se usa para guardar el estado actual de los códigos de columna (colum_code) y de fila (row_code), la salida va a "deco_out" para generar la decodificación de estos valores.
+
+#### 1.4 row_ff
+```SystemVerilog
+    module row_ff (
+    input  logic clk,     
+    input  logic reset,    
+    input  logic enable,      
+    input  logic d,     
+    output logic q 
+);
+
+    logic q_reg; 
+
+    always_ff @(posedge clk or posedge reset) begin
+        if (reset) begin
+            q <= 1'b0;           
+        end else if (enable) begin
+            q <= d;          
+        end
+       
+    end
+
+
+endmodule
+```
+Descripción: Se encarga de guardar el valor row[3:0] detectado directamente del teclado (No es directamente debido a que pasa por un sincronizador primero pero funciona para la expliación) Esto fue necesario debido a la naturaleza combinacional de "row_detect".
+
+#### 1.5. input_sync
+```SystemVerilog
+    module input_sync (
+    input logic clk,        
+    input logic reset,      
+    input logic input_pulse,     //Señal física (asíncrona)
+    output logic sync_input      //Señal sincronizada
+);
+
+    // Flip-flops para sincronización
+    logic sync_ff1, sync_ff2;
+
+    //Se usa un sincronizador basado en dos flip-flops en cascada
+    always_ff @(posedge clk or posedge reset) begin
+        if (reset) begin
+            sync_ff1 <= 1'b0;    
+            sync_ff2 <= 1'b0;    
+            sync_input <= 1'b0;  
+        end else begin
+            sync_ff1 <= input_pulse;     
+            sync_ff2 <= sync_ff1;   
+            sync_input <= sync_ff2; 
+        end
+    end
+
+
+endmodule
+```
+Descripción: Es un sincronizador basado en 2 FF en cadena, se usa para asegurar que la señal generada por el teclado llegue de manera sincrónica al resto del sistema y obtener un buen funcionamiento.
+
+#### 1.5. neg_sign_module
+```SystemVerilog
+    module neg_sign_module (
+    input logic neg_flag1,
+    input logic neg_flag2,
+    input logic keep_sign_on,
+    input logic neg_sign_disp,
+    output logic neg_sign_output
+
+);
+    logic inter_neg_flag;
+
+    always_comb begin
+
+        inter_neg_flag = (neg_flag1 ^ neg_flag2);
+
+        if (keep_sign_on)begin
+            neg_sign_output = !(inter_neg_flag || neg_sign_disp);
+        end
+        else begin
+            neg_sign_output = !neg_sign_disp;
+        end
+
+    end
+```
+Descripción: No es directamente relacionado con el teclado, pero este módulo haciendo uso del teclado, al presionar la tecla "#" se obtiene el signo menos (-) con este código se genera o no señal del transistor encargado de mostrar el signo. Se usa un XOR para decir que cuando los signos de los númeoros ingresados sean iguales, no encienda el menos y que cuando sean diferentes lo haga. Se encarga también de mostrar el signo mientras se ingresan los números.
+
 
 ### 3.3 Booth_Mul (Módulo de multiplicación)
 #### 1. Código
@@ -405,11 +734,411 @@ Finalmente en el siguiente wave view se puede observar como la salida Z empieza 
 
 Como se puede observar en el instante que valid es 1 Z obtiene el valor de 7744 (esto para la multiplicación de 88*88) y tambien en ese mismo instante Z y Y adquieren los valores para la siguiente multiplicación.
 
+### 3.4 Module_call (Módulo principal)
+#### 1. Código
+```SystemVerilog
+    module module_call (
+    input logic clk,
+    input logic reset,
+    input logic [3:0] row,
+    output logic [3:0] colum,
+
+    //Variables para 7 segmentos
+    output logic segA,
+    output logic segB,
+    output logic segC,
+    output logic segD,
+    output logic segE,
+    output logic segF,
+    output logic segG,
+    output logic dispuni,     
+    output logic dispdec,
+    output logic dispcen,
+    output logic dispmil,    
+    output logic neg_sign
+);
+
+    //variables internas
+    logic stop_flag;
+    logic clk_cut;
+    logic [1:0] colum_code;
+    logic [3:0] sync_row;
+    logic [1:0] row_code;
+    logic [3:0] ff_out;
+    logic mostrar_dato;
+    logic [3:0] stored_row;
+    logic enable_input;
+    logic reset_input_ff;
+    logic [15:0] bcd;
+    logic [3:0] num_deco_out;
+    logic [15:0] bcd_num1;
+    logic [15:0] bcd_num2;
+    logic [15:0] bin_num1;
+    logic [15:0] bin_num2;
+    logic neg_flag1;
+    logic neg_flag2;
+    logic multiplic_flag;
+    logic neg_sign_disp;
+    logic mult_ready1;
+    logic mult_ready2;
+    logic mult_result;
+    logic [15:0] mult_result_bcd;
+    logic result_ok;
+    logic [15:0] salida_bcd;
+    logic [15:0] z_out;
+
+
+    seg7_disp s7d (
+        .clk(clk),
+        .reset(reset),
+        .segA(segA),
+        .segB(segB),
+        .segC(segC),
+        .segD(segD),
+        .segE(segE),
+        .segF(segF),
+        .segG(segG),
+        .dispuni(dispuni),
+        .dispdec(dispdec),
+        .dispcen(dispcen),
+        .dispmil(dispmil),
+        .bcd(bcd)
+    );
+
+    BoothMul boothMul_inst (
+        .clk(clk),
+        .rst(reset),
+        .start(mult_ready2),
+        .X(bin_num1),
+        .Y(bin_num2),
+        .z_out(z_out),
+        .valid_out(result_ok)
+    ); 
+
+    show_num show_num_inst(
+        .stored_num_bcd(salida_bcd),
+        .mult_result_bcd_SN(mult_result_bcd),
+        .result_ok(result_ok),
+        .bcd_to_s7d(bcd)
+    );
+
+    binario_bcd binario_bcd_resultado (
+        .bin_for_bcd(z_out),
+        .bcd_out(mult_result_bcd)
+    );
+
+    bcd_binario bcd_binario_inst1 ( //hace salida bin correcta
+        .entrada_bcd(bcd_num1),
+        .multiplic_flag(multiplic_flag),
+        .salida_bin(bin_num1),
+        .mult_ready(mult_ready1)
+    );
+
+    bcd_binario bcd_binario_inst2 ( //hace salida bin correcta
+        .entrada_bcd(bcd_num2),
+        .multiplic_flag(multiplic_flag),
+        .salida_bin(bin_num2),
+        .mult_ready(mult_ready2)
+    );
+
+    neg_sign_module nsm (
+        .neg_flag1(neg_flag1),
+        .neg_flag2(neg_flag2),
+        .keep_sign_on(multiplic_flag),
+        .neg_sign_disp(neg_sign_disp),
+        .neg_sign_output(neg_sign)
+    );
+
+    bcd_stored_num bcd_stored_num_inst (
+        .clk(clk),
+        .reset(reset),
+        .nuevo_numero(num_deco_out),
+        .salida_bcd(salida_bcd),
+        .bcd_num1(bcd_num1),
+        .bcd_num2(bcd_num2),
+        .neg_flag1(neg_flag1),
+        .neg_flag2(neg_flag2),
+        .neg_sign(neg_sign_disp),
+        .multiplic_flag(multiplic_flag)
+    );
+
+    row_ff row_ff3 (
+        .clk(clk),
+        .reset(reset_input_ff),
+        .enable(enable_input),
+        .d(sync_row[3]),
+        .q(stored_row[3])
+    );
+
+    row_ff row_ff2 (
+        .clk(clk),
+        .reset(reset_input_ff),
+        .enable(enable_input),
+        .d(sync_row[2]),
+        .q(stored_row[2])
+    );
+
+    row_ff row_ff1 (
+        .clk(clk),
+        .reset(reset_input_ff),
+        .enable(enable_input),
+        .d(sync_row[1]),
+        .q(stored_row[1])
+    );
+
+    row_ff row_ff0 (
+        .clk(clk),
+        .reset(reset_input_ff),
+        .enable(enable_input),
+        .d(sync_row[0]),
+        .q(stored_row[0])
+    );
+    
+    deco_out deco_out_inst (
+        .q_in(ff_out),
+        .num_out(num_deco_out)
+    );
+    
+    output_ff out_ff3 (
+        .clk(clk),
+        .reset(reset),
+        .enable(stop_flag),
+        .mostrar_dato(mostrar_dato),
+        .d(colum_code[1]),
+        .q(ff_out[3])
+    );
+
+    output_ff out_ff2 (
+        .clk(clk),
+        .reset(reset),
+        .enable(stop_flag),
+        .mostrar_dato(mostrar_dato),
+        .d(colum_code[0]),
+        .q(ff_out[2])
+    );
+
+    output_ff out_ff1 (
+        .clk(clk),
+        .reset(reset),
+        .enable(stop_flag),
+        .mostrar_dato(mostrar_dato),
+        .d(row_code[1]),
+        .q(ff_out[1])
+    );
+
+    output_ff out_ff0 (
+        .clk(clk),
+        .reset(reset),
+        .enable(stop_flag),
+        .mostrar_dato(mostrar_dato),
+        .d(row_code[0]),
+        .q(ff_out[0])
+    );
+
+    input_sync row0_sync (
+        .clk(clk),
+        .reset(reset),
+        .input_pulse(row[0]),
+        .sync_input(sync_row[0])
+    );
+
+    input_sync row1_sync (
+        .clk(clk),
+        .reset(reset),
+        .input_pulse(row[1]),
+        .sync_input(sync_row[1])
+    );
+
+    input_sync row2_sync (
+        .clk(clk),
+        .reset(reset),
+        .input_pulse(row[2]),
+        .sync_input(sync_row[2])
+    );
+
+    input_sync row3_sync (
+        .clk(clk),
+        .reset(reset),
+        .input_pulse(row[3]),
+        .sync_input(sync_row[3])
+    );
+
+    clk_cut_module ccm (
+        .clk(clk),
+        .reset(reset),
+        .stop_flag(stop_flag),
+        .clk_cut(clk_cut),
+        .mostrar_dato(mostrar_dato),
+        .enable_input(enable_input),
+        .reset_input_ff(reset_input_ff)
+    );
+
+    colum_on colum_on_inst (
+        .clk_cut(clk_cut),
+        .reset(reset),
+        .colum(colum),
+        .colum_code(colum_code)
+    );
+
+    row_detect row_detect_ins (
+        .row(stored_row),
+        .stop_flag(stop_flag),
+        .row_code(row_code)
+    );
+
+endmodule
+```
+#### 2. Parámetros
+Aquí se usan como variables internas
+```SystemVerilog
+    logic stop_flag;
+    logic clk_cut;
+    logic [1:0] colum_code;
+    logic [3:0] sync_row;
+    logic [1:0] row_code;
+    logic [3:0] ff_out;
+    logic mostrar_dato;
+    logic [3:0] stored_row;
+    logic enable_input;
+    logic reset_input_ff;
+    logic [15:0] bcd;
+    logic [3:0] num_deco_out;
+    logic [15:0] bcd_num1;
+    logic [15:0] bcd_num2;
+    logic [15:0] bin_num1;
+    logic [15:0] bin_num2;
+    logic neg_flag1;
+    logic neg_flag2;
+    logic multiplic_flag;
+    logic neg_sign_disp;
+    logic mult_ready1;
+    logic mult_ready2;
+    logic mult_result;
+    logic [15:0] mult_result_bcd;
+    logic result_ok;
+    logic [15:0] salida_bcd;
+    logic [15:0] z_out;
+
+```
+#### 3. Entradas y salidas:
+```SystemVerilog
+    input logic clk,
+    input logic reset,
+    input logic [3:0] row,
+    output logic [3:0] colum,
+    //Variables para 7 segmentos
+    output logic segA,
+    output logic segB,
+    output logic segC,
+    output logic segD,
+    output logic segE,
+    output logic segF,
+    output logic segG,
+    output logic dispuni,     
+    output logic dispdec,
+    output logic dispcen,
+    output logic dispmil,    
+    output logic neg_sign
+```
+#### 4. Criterios de diseño 
+Tomando en cuenta la gran cantidad de módulos involucrados en todo el sistema, diseño se realizó por etapas, donde, lo primero fue asegurar el funcionamiento del teclado con todos los módulos involucrados. Después se agregaron los módulos relacionados con los 7 segmentos para poder ver que el teclado funciona fuera del testbench, en cuanto a la generación de los números. Por último, se agregaron los módulos relacionados con la multiplicadora y otros relacionados para mostrar el resultado.
+
+#### 5. Testbench
+```SystemVerilog
+module module_call_tb;
+
+    //Declaración de variables
+    logic clk;
+    logic reset;
+    logic [3:0] colum;
+    logic [3:0] row;
+
+    //instancia 
+    module_call uut(
+        .clk(clk),
+        .reset(reset),
+        .colum(colum),
+        .row(row)
+
+    );
+
+    initial begin
+        clk = 0;
+        forever #1 clk = ~clk;  // Reloj con periodo de 10 ns
+    end
+
+     initial begin
+        // Inicio de la simulación
+        $display("TB para module_call");
+
+        // Condiciones iniciales
+        reset = 1;        // Activamos el reset al inicio
+        row = 0;
+        #20 
+        reset = 0;    // Desactivamos el reset después de 20 ns
+        #40
+        row[0] = 1;
+        #5
+        row[0] = 0;
+        #2000
+        row[2] = 1;
+        #5
+        row[2] = 0;
+        #2000
+        row[3] = 1;
+        #5
+        row[3] = 0;
+
+        
+
+
+        // Esperar un número de ciclos suficiente para observar cambios en clk_cut
+        #20000;
+
+        // Fin de la simulación
+        $display("Testbench finalizado");
+        $finish;
+    end
+
+    // Monitoreo para observar la salida
+    initial begin
+        $monitor("Time=%0t | clk=%b | reset=%b | colum=%b | row= %b", $time, clk, reset, colum, row);
+    end
+
+
+    initial begin
+        $dumpfile("module_call_tb.vcd");
+        $dumpvars(0,module_call_tb);
+    end
+
+
+endmodule
+```
+Este testbench muestra algunas teclas siendo presionadas, sin embargo, como se tiene poco control del cuando hacer row[x] HIGH de acuerdo a una columna, se usó el testbench principalmente con el Waveview.
 
 
 ## 4. Consumo de recursos
+```SystemVerilog
+Info: Device utilisation:
+Info: 	                 VCC:     1/    1   100%
+Info: 	               SLICE:  1477/ 8640    17%
+Info: 	                 IOB:    22/  274     8%
+Info: 	                ODDR:     0/  274     0%
+Info: 	           MUX2_LUT5:   327/ 4320     7%
+Info: 	           MUX2_LUT6:   149/ 2160     6%
+Info: 	           MUX2_LUT7:    48/ 1080     4%
+Info: 	           MUX2_LUT8:    14/ 1056     1%
+Info: 	                 GND:     1/    1   100%
+Info: 	                RAMW:     0/  270     0%
+Info: 	                 GSR:     1/    1   100%
+Info: 	                 OSC:     0/    1     0%
+Info: 	                rPLL:     0/    2     0%
+```
 
 ## 5. Problemas encontrados durante el proyecto
+Sin duda uno de los mayores problemas fue hacer funcionar el teclado, debido a la multitud de señales que están involucradas, en general, el problema con esto fue asegurar la sincronización de todo el sistema y buscar que la probabiliad de fallo del mismo sea la más baja posible.
+Además del teclado, se tuvo problemas con la multiplicadora, debido a que con números pequeños hace la operación correctamente, pero si se ponen, números más grandes deja de funcionar bien.
+
 
 ## Apendices:
 ### Apendice 1:
